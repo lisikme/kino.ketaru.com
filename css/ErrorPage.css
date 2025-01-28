@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+:root{
+    --color1: #000820;
+    --color2: #000036;
+    --color3: #3363ff;
+    --border: 10%;
+    --radius: 5px;
+    --top: 15px;
+} 
+BODY {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background: linear-gradient(90deg, var(--color2) 0%, var(--color1) 50%, var(--color2) 100%);
+}
+.btn-7 {
+display: inline-flex;
+font-size: 16px;
+letter-spacing: 0px;
+font-weight: 600;
+line-height: 16px;
+text-decoration: none !important;
+text-transform: none;
+background-color: #242830;
+color: #fff;
+border: none;
+border-radius: 5px;
+bottom: 12px;
+cursor: pointer;
+justify-content: center;
+padding: 16px 32px;
+height: 48px;
+text-align: center;
+white-space: nowrap;
+background: #a2bcd4;
+background: linear-gradient(120deg, rgb(221, 133, 0), rgb(175, 0, 0), rgb(112, 0, 56));
+transition: 0.2s;
+background-size: 200% 100%;
+background-position: 100% 0;      
+}
+.btn-7:hover {
+animation: shadow  2s infinite ease-in-out;
+transform: scale(1.050);
+transition: 0.2s;
+background-position: 0 0;
+}
+.message-box {
+height: 225px;
+width: 380px;
+position: absolute;
+top: 282px;
+left: 50%;
+margin-top: -100px;
+margin-left: -400px;
+/* font-family: 'Quicksand', "Segoe UI"; */
+font-family: Rubik, serif;
+font-weight: 600;
+transition: 0.3s;
+}
+.message-box1 {
+border-radius: 5px;
+background: linear-gradient(160deg, #b8d4ff 0%, #0045ad 100%);
+padding: 4px;
+}
+.message-box1 p {
+    color:#ffffff;
+    background: linear-gradient(160deg, #00087a 0%, #05002e 100%);
+    font-size: 18px; 
+    border-radius: 5px;
+    padding: 8px 14px 8px 14px;
+    margin: 0px 0px 0px 0px;
+    }
+.message-box h1 {
+text-shadow:
+0 0 0px rgb(255, 255, 255),
+0 0 20px rgb(255, 255, 255),
+0 0 150px rgb(255, 255, 255);
+/* font-family: 'Quicksand', "Comfortaa"; */
+font-family: Rubik, serif;
+text-align: center;
+font-weight: 400;
+font-size: 45px;
+line-height: 0px;
+margin-bottom: 50px;
+}
+@keyframes float {
+    100% {
+        transform: translateY(20px);
+    }
+}
+.inf {
+    position: absolute;
+    top: 370px;
+    left: 50%;
+    opacity: 1.0;
+    margin-top: -250px;
+    margin-left: 50px;
+    z-index: -99999999;
+    transition: 0.2s;
+    opacity: 1.0;
+}
+@media (min-width: 20px) and (max-width: 850px) {
+    .inf {
+        position: absolute;
+        top: 370px;
+        left: 50%;
+        margin-top: -250px;
+        margin-left: -190px;
+        transition: 0.3s;
+    }
+    #Page-1{
+        transition: 0.3s;
+        opacity: 0.25;
+    }
+    .message-box {
+        top: 250px;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -190px;
+        transition: 0.3s;
+    }
+}
+.custom-btn {
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#Polygon-1,
+#Polygon-2,
+#Polygon-3,
+#Polygon-4,
+#Polygon-4,
+#Polygon-5 {
+    -webkit-animation: float 1s infinite ease-in-out alternate;
+    animation: float 1s infinite ease-in-out alternate;
+}
+#Polygon-2 {
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+}
+#Polygon-3 {
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+}
+#Polygon-4 {
+    -webkit-animation-delay: .6s;
+    animation-delay: .6s;
+}
+#Polygon-5 {
+    -webkit-animation-delay: .8s;
+    animation-delay: .8s;
+}

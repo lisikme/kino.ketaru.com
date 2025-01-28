@@ -1,0 +1,98 @@
+/* Дизайн шапки страницы */
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+
+.site-header {
+    font-family: Rubik, serif !important;
+    background-color: var(--header);
+    border-bottom: 1px solid var(--BoxBorder);
+    height: 60px;
+    animation: none;
+    padding: 24px 0
+}
+/* Кликабельный логотип */
+.LogoBox{
+    transition: 0.2s;
+    padding: 3px 10px 2px 4px;
+    border-radius: 5px;
+    margin-right: 5px;
+    background: #1e293b;
+}
+.LogoBox:hover {
+    transition: 0.2s;
+    background: #182334;
+}
+
+/* Icon/Text/Version логотипа */
+.LogoName:before{
+    font-family: Onest, serif !important;
+    content: "Ketaru";
+    top: -2px;
+    position: relative;
+    background: url(https://ketaru.com/corp.png);
+    background-size: 25px;
+    padding-left: 34px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-weight: 600;
+    font-size: 20px;
+    color: #00ffea;
+    letter-spacing: 1px;
+}
+.LogoName:after{
+    font-family: Onest, serif !important;
+    content: 'Corp';
+    font-weight: 600;
+    font-size: 20px;
+    top: -2px;
+    position: relative;
+    /* font-size: 15px; */
+    color: #ffef5b;
+    letter-spacing: 1px;
+}
+.LogoPage:before{
+    content: var(--NamePage);
+    font-weight: 600;
+    font-size: 24px;
+    margin-left: 7px;
+    color: #ffffff;
+}
+.LogoPage:after{
+    content: "";
+    font-weight: 600;
+    font-size: 12px;
+    margin-left: 2px;
+    color: #fbff00;
+}
+.LogoVersion:before{
+    font-family: Rubik, serif !important;
+    content: var(--VerPage);
+    font-weight: 400;
+    font-size: 14px;
+    background: #ffffff20;
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin-left: 5px;
+    top: -11px;
+    position: relative;
+    color: #a0d6ff;
+} 
+.site-header-inner {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+.header-links {
+    display: inline-flex
+}
+.header-links li {
+    display: inline-flex
+}
+
+/* Запрет выделения текста */
+/* :root, a, u{text-decoration: none; overflow-x: hidden;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+}  */

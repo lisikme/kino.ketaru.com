@@ -1,0 +1,41 @@
+/* KetaRu ScrollBars */
+:root{
+    --Background: #0f0f0f;
+    --Fon: #0d1218;
+    --ColorNone: #4cc2ff;
+    --ColorCursor: #4cc3ff80;
+    --Width: 16px;
+    --Border: 4px;
+    --Radius: 6px;
+} 
+
+/* YouTube ScrollBars */
+/* :root{
+    --Background: #0f0f0f;
+    --ColorNone: #aaaaaa;
+    --ColorCursor: #717171;
+    --Width: 16px;
+    --Border: 4px;
+    --Radius: 100px;
+} */
+
+/* Дизайн скрол-бара */
+.element::-webkit-scrollbar{
+    width: 0;
+}
+::-webkit-scrollbar{
+    width: var(--Width);
+    background-color: var(--Background);
+
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--ColorNone);
+    border-radius: var(--Radius);
+    min-height: 30px;
+    width: var(--Width);
+    border: var(--Border) solid var(--Background);
+
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--ColorCursor);
+}

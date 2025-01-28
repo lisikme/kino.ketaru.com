@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+/* Отступы */
+.hero {
+    padding: 40px 0px 20px 0px;
+}
+.hero3 {
+    padding: 0px 0px 20px 0px;
+}
+.hero1 {
+    padding: 0px 0px 20px 0px;
+}
+.hero2 {
+    padding: 20px 0px 20px 0px;
+}
+.film {
+    padding-left: 160px;
+    margin-top: -50px;
+}
+.hero-cta {
+    padding-left: 150px;
+    margin-top: -49px;
+}
+.hero-copy {
+    width: 100%;
+    padding: 0px;
+}
+
+/* Дизайн секции */
+.hero-copy {
+    padding: 15px;
+    height: 233px;
+    background-color: #020817;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #1e293b;
+    border-radius: 3px;
+}
+/* background: #910500; */
+/* Название/ограниение */
+.name{
+    font-family: Rubik, serif !important;
+    /* line-height: 1; */
+    height: 107px;
+    font-size: 25px;
+    top: 2.5px;
+    position: relative;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 48px;
+    margin-bottom: 16px
+}
+
+/* Название/ограниение каталога */
+.items{
+    font-family: Rubik, serif !important;
+    height: 107px;
+    font-weight: 900 !important;
+}
+.item1{
+    /* line-height: 1.2; */
+    font-size: 25px;
+    color: #fff;
+    font-weight: 900;
+    top: 1px;
+    position: relative;
+}
+.item2 {
+    font-family: Rubik, serif !important;
+    font-size: 15px;
+    background: #ffffff15;
+    border: 1px solid #ffffff15;
+    color: #ffee83;
+    border-radius: 3px;
+    top: 9px;
+    position: relative;
+    font-weight: 600;
+    width: 45px; /* Ширина блока */
+    height: 22px; /* Высота блока */
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center; /* Горизонтальное выравнивание */
+    align-items: center; /* Вертикальное выравнивание */
+    /* display: flex; */
+}
+.number {
+    font-size: 15px;
+    background: #ffffff15;
+    border: 1px solid #ffffff15;
+    color: #ffee83;
+    border-radius: 3px;
+    text-align: center;
+    position: relative;
+    font-weight: 600;
+    top: 8px;
+    padding: 2px 10px;
+    width: 45px; /* Ширина блока */
+    height: 22px; /* Высота блока */
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center; /* Горизонтальное выравнивание */
+    align-items: center; /* Вертикальное выравнивание */
+}
+
+/* Изображение */
+.im{
+    top: -120px;
+    height: 200px;
+    width: 145px;
+    background-color: #1d2935;
+    position: relative;
+    border-radius: 5px;
+}
+.image{
+    border: 1px solid #2c3a50;
+    /* outline: 1px solid #2c3a50; */
+    /* outline-offset: -1px; */
+    /* box-shadow: 5px 5px 4px #0e141a; */
+    border-radius: 3px;
+    height: 200px;
+    width: 145px;
+    background-color: #1d2935;
+    position: relative;
+    animation: image 1s infinite;
+}
+.image:hover {
+    transition: 0.2s;
+    box-shadow: 2px 2px 1px #0e141a;
+    animation: image 1s infinite;
+}
+@keyframes image {
+    0%   {background-color: #090c12}
+    50%  {background-color: #0c1117}
+    100% {background-color: #090c12}
+}
+
+/* Кнопка */
+.buttonn {
+    position: relative;
+    border-radius: 3px;
+    background-color: #1e293b;
+    padding: 6px 25px;
+    display: inline-flex;
+    text-decoration: none !important;
+    color: #ffffff;
+    font-weight: 100;
+    cursor: pointer;
+    left: 8px;
+    top: 7px;
+} 
+.buttonn:hover {
+    background-color: #182334;
+    color: #ffffff;
+}
+
+/* Разрешение выделения текста */
+.item1, .item1:before{
+    content: var(--VName);
+    -webkit-user-select: text; -webkit-user-select: text;
+    -khtml-user-select: text; -moz-user-select: text;
+    -ms-user-select: text; user-select: text;
+    -o-user-select: text;
+}
+/* Запрет выжедения текста */
+.number, .number:before{
+    content: var(--VAge);
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    -o-user-select: none;
+}

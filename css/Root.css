@@ -1,0 +1,46 @@
+/* Дизайн фона сайта */
+:root {
+    --background: #0d1218;
+    --NamePage: "Кино";
+    --VerPage: "Каталог 2.0";
+}
+/* Дизайн шапки сайта */
+:root {
+    --PageColor: #0d1218;
+    --background: #0d1218;
+    --header: #020817;
+    --Shadow: #0e141a;   
+    --BoxBorder: #1e293b;
+} 
+/* Полоса прокрутки */
+:root {
+    --PageColor: #0d1218;
+    --background: #0d1218;
+    --header: #020817;
+    --Shadow: #0e141a;   
+    --BoxBorder: #1e293b;
+}
+/* Секции блоков */
+:root {
+    --PageColor: #0d1218;
+    --background: #0d1218;
+    --header: #020817;
+    --Shadow: #0e141a;   
+    --BoxBorder: #1e293b;
+}
+/* Видео блок */
+:root {
+    --PageColor: #0d1218;
+    --background: #0d1218;
+    --header: #020817;
+    --Shadow: #0e141a;   
+    --BoxBorder: #1e293b;
+}
+/* Анимации */
+:root {
+    --PageColor: #090909;
+    --background: #0d1218;
+    --header: #020817;
+    --Shadow: #0e141a;   
+    --BoxBorder: #1e293b;
+}
