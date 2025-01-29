@@ -298,7 +298,7 @@ if not os.path.exists(f'./{DIR}'):
     os.makedirs(f'./{DIR}')
 
 # Изменение каталога
-Строка = 65
+Строка = 79
 with open('./index.html', 'r', encoding='utf8') as Файл:
     lines = Файл.readlines()
 lines.insert(Строка-2, f'''
