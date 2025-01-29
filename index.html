@@ -33,7 +33,7 @@
 
 <!-- Шапка страницы -->
 <div class="body-wrap">
-    <header class="site-header">
+    <!-- <header class="site-header">
         <div class="container">
             <div class="site-header-inner">
                 <div class="brand header-brand">
@@ -42,7 +42,254 @@
                             <a href="https://ketaru.com">
                                 <span class="LogoBox"><ui class="LogoName"></span></a><ui class="LogoPage"><ui class="LogoVersion"></ui></h4>
                             </head>
-                        </header>
+                        </header> -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Commissioner&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+#site-bg{
+    background: #0d1218;
+}
+#site-header{
+    height: 58px;
+    background: #151c24;
+    margin: 50% auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #374758;
+    box-shadow: 2px 2px 4px #080c0f70;
+}
+#site-header-box{
+    padding: 10px 10px 5px 10px;
+    max-width: 1315px;
+    height: 58px;
+    margin: 50% auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#site-logo-box{
+    background: #2c3a50;
+    display: inline-flex;
+    padding: 0px;
+    border-radius: 5px;
+    padding: 4px;
+}
+#site-logo-img{
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    /* position: absolute; */
+}
+#site-logo-name{
+    font-family: onest !important;
+    /* font-family: 'Quicksand', "Comfortaa" !important; */
+    /* font-family: 'Jura', sans-serif; */
+    /* font-family: 'Calibri'; */
+    /* font-family: 'Alegreya Sans SC', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Manrope', sans-serif; */
+    /* font-family: 'Overpass'; */
+    color: #00ffea;
+    font-weight: 600;
+    padding: 0px 5px 0px 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 0px; 
+    letter-spacing: 1px;
+    padding-top: 15px;
+    position: relative;
+}
+#corp{
+    font-family: onest !important;
+    color: #ffef5b !important;
+}
+#page-name{
+    left: 0px;
+    /* font-family: 'Quicksand', "Comfortaa"; */
+    /* font-family: 'Jura', sans-serif; */
+    /* font-family: 'Calibri'; */
+    font-family: 'Alegreya Sans SC', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Manrope', sans-serif; */
+    /* font-family: 'Overpass'; */
+    font-family: onest !important;
+    color: #9ebcff;
+    font-weight: 600;
+    /* text-align: center; */
+    vertical-align: middle;
+    line-height: 10px; 
+    padding-top: 0px;
+    text-align: center;
+    width: 100%;
+    top: 24px;
+    position: absolute;
+}
+html, body {font-family: 'Alegreya Sans SC', sans-serif; margin: 0; padding: 0; color: #fff;}
+main{
+    font-family: 'Alegreya Sans SC', sans-serif;
+    padding: 15px 25px;
+}
+main> *, #site-logo-box{
+    transform: translateX(); 
+    animation: AnimX .5s forwards;
+}
+#page-name{
+    animation: AnimY .5s forwards;
+}
+header{
+    animation: none;
+    transform: translateX(0); 
+}
+*:hover{
+    transition: .2s infinite linear;
+}
+@keyframes AnimX {
+    0%   {
+        transform: translateX(-30%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes AnimY {
+    0%, 50% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+A, A:visited, A:active{
+    color: #fff !important;
+}
+#projects-block{
+    background: #2b427d;
+    border: 1px solid #364758;
+    text-align: center;
+    /* padding: 1px 1px; */
+    border-radius: 3px;
+    /* width: 500px; */
+    max-width: 700px;
+    margin: 50% auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#projects-panel{
+    text-align: left;
+    border-top: 1px solid #364758;
+    background: #141c24;
+    padding: 5px 10px;
+    border-radius: 0 0 3px 3px;
+    /* width: 500px; */
+}
+#pjbox{
+    background: #273449;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px 0;
+    transition: all .2s;
+    box-shadow: 3px 3px 4px #080c0f;
+}
+#pjbox:hover{
+    background: #3a4c69;
+    box-shadow: 1px 1px 4px #080c0f;
+}
+#pjimg{
+    background: #131924;
+    border-radius: 5px;
+    border: 1px solid #364758;
+    height: 40px;
+    width: 40px;
+}
+#pjname{
+    font-size: 22px;
+    left: 54px;
+    top: -1px;
+    position: absolute;
+}
+#pjdec{
+    background: #0f1720;
+    line-height: 10px;
+    left: 53px;
+    top: 26px;
+    color: #00ffea;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    position: absolute;
+}
+    :root {
+    --NamePage: "Radio";
+    --VerPage: "KetaRu Web";
+    }
+    #rel{
+        color: #fff;
+        background: #c22b4c;
+        font-family: onest !important;
+        padding: 2px 6px;
+        border-radius: 50px;
+        font-size: 10px;
+        font-weight: 900;
+        top: -8px;
+        position: absolute;
+        margin-left: 4px;
+    }
+    #nam{
+        position: absolute;
+        display:inline-block;
+        left: 0px;
+        font-size: 14px;
+        
+        width: 100%;
+        top: 16px;
+        font-family: onest !important;
+        color: #ffef5b;
+    }
+    #page-name{
+        font-size: 20px !important;
+        top: 5px;
+        position: absolute !important;
+        top: 18px !important;
+        font-family: 'onest' !important;
+    }
+    #inf{
+        backdrop-filter: blur(2vh);
+        background: #ffffff30;
+        border: 1px solid #ffffff30;
+        font-family: onest;
+        width: 430px;
+        font-size: 18px;
+        margin: 0 auto;
+        top: calc(50% - 170px);
+        left:  calc(50% - 216px);
+        /* left: -4px; */
+        font-weight: 600;
+        padding: 5px 0px;
+        text-align: center;
+        border-radius: 3px;
+        position: relative;
+        position: absolute;
+    }
+</style>
+
+    <header id="site-header">
+        <type id="page-name">Киностудия <span id="nam">Каталог фильмов</span> <span id="rel">BETA</span></type>
+        <div id="site-header-box">
+            <a href="https://ketaru.com"><div id="site-logo-box"><img id="site-logo-img" src="https://ketaru.com/corp.png">
+                <name id="site-logo-name">Ketaru<span id="corp">Corp</span></name></div></a>
+            </div>
+        </header>
 
 <!-- каталог фильмов -->
 <!-- <section class="hero2"></section>
