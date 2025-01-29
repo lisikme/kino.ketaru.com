@@ -1153,14 +1153,19 @@
     }
     
     /* Стили для поля ввода при фокусе */
-    #searchBar:focus {
-        border-color: #6374b3;
+    #searchBar:focus,
+    #searchBar:focus:hover {
+        border-color: #6374b3; /* Убираем эффект ховера при фокусе */
+    }
+    /* Стили для поля ввода при фокусе */
+    #searchBar:hover {
+        border-color: #32486b;
     }
     
     /* Плейсхолдер (текст по умолчанию) */
     #searchBar::placeholder {
         color: #597095;
-        font-style: italic;
+        /* font-style: italic; */
     }
     
     /* Адаптация для мобильных устройств */
