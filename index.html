@@ -50,8 +50,8 @@
 <div class="search-wrapper">
     <input type="text" id="searchBar" placeholder="Поиск..." class="search-bar" autocomplete="off">
     <span class="search-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="20px" height="20px"><path d="M10 2a8 8 0 105.293 14.293l5.707 5.707a1 1 0 001.414-1.414l-5.707-5.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z" />
-    </svg></span></div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="20px" height="20px"><path d="M10 2a8 8 0 105.293 14.293l5.707 5.707a1 1 0 001.414-1.414l-5.707-5.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z" />
+        </svg></span><div id="count-film">0</div></div>
 </div>
 
 <section class="hero3" style="position: relative; display: none;" id="outdatedMessage">
@@ -1071,6 +1071,35 @@
         margin: 0;
         font-family: Arial, sans-serif;
     }
+
+    #count-film{
+        color: #c9b1ff; 
+        font-weight: 900;
+        font-size: 14px;
+        position: absolute; 
+        right: 8px;
+        padding-top: 4px;
+        text-align: center;
+        width: 60px;
+        height: 30px;
+        
+        top: 8px;
+        border-radius: 3px;
+        background: #171c2a;
+    }
+    #count-film::before{
+        color: #6cc4ff; 
+        font-size: 10px;
+        content: 'Найдено';
+        font-weight: 600;
+        position: absolute; 
+        right: 0px;
+        top: -12px;
+        padding-top: 4px;
+        text-align: center;
+        width: 60px;
+        height: 30px;
+    }
     .css-info{
         font-family: Rubik, serif !important;
         font-weight: 100;
@@ -1095,7 +1124,7 @@
         font-family: Rubik, serif !important;
         background: #020817;
         width: 100%;
-        padding: 10px 20px 10px 45px; /* Отступы внутри поля с учётом места для иконки */
+        padding: 10px 75px 10px 45px; /* Отступы внутри поля с учётом места для иконки */
         font-size: 16px;
         margin-bottom: 20px;
         font-weight: 600;
@@ -1189,54 +1218,57 @@
     function hasLatin(text) {
         return /[a-zA-Z]/.test(text);
     }
+    // Функция для обновления количества фильмов
+    function updateFilmCount(searchTerm = "") {
+        const movies = document.querySelectorAll(".hero1"); // Все блоки фильмов
+        let found = 0; // Количество найденных фильмов
+
+        if (searchTerm.trim() === "") {
+            found = movies.length; // Если поле пустое, показываем все фильмы
+        } else {
+            // Перебираем все блоки фильмов для поиска
+            movies.forEach(movie => {
+                const title = movie.querySelector(".item1").textContent.toLowerCase(); // Название фильма
+                const cleanedTitle = processSearchQuery(title);
+
+                const normalizedSearchTermEn = processSearchQuery(searchTerm);
+                const normalizedSearchTermRu = fixKeyboardLayout(normalizedSearchTermEn, enToRuLayout);
+                const fixedSearchTerm = hasLatin(normalizedSearchTermEn) && !hasCyrillic(normalizedSearchTermEn)
+                    ? fixKeyboardLayout(normalizedSearchTermEn, enToRuLayout)
+                    : normalizedSearchTermRu;
+
+                const titleIncludesSearchTerm = cleanedTitle.includes(normalizedSearchTermEn) || cleanedTitle.includes(normalizedSearchTermRu);
+
+                if (titleIncludesSearchTerm) {
+                    movie.style.display = "block"; // Показываем фильм
+                    found++;
+                } else {
+                    movie.style.display = "none"; // Скрываем фильм
+                }
+            });
+        }
+
+        // Обновляем количество найденных фильмов
+        const countElement = document.getElementById("count-film");
+        countElement.textContent = `${found}`;
+
+        // Показываем блок hero3, если фильмов не найдено
+        const hero3 = document.querySelector(".hero3");
+        if (found === 0) {
+            hero3.style.display = "block";
+        } else {
+            hero3.style.display = "none";
+        }
+    }
+
     // Логика поиска
     document.getElementById("searchBar").addEventListener("input", function() {
-        const searchTerm = this.value.toLowerCase(); // Получаем текст из поля поиска
-        // Очищаем строку от пробелов и спецсимволов
-        const normalizedSearchTerm = processSearchQuery(searchTerm);
-        const normalizedSearchTermEn = normalizedSearchTerm; 
-        const normalizedSearchTermRu = fixKeyboardLayout(normalizedSearchTerm, enToRuLayout); // Преобразуем в русскую раскладку
-        // Если строка состоит только из латиницы или только из кириллицы, исправляем раскладку
-        let fixedSearchTerm = normalizedSearchTermEn;
-        if (hasLatin(normalizedSearchTerm) && !hasCyrillic(normalizedSearchTerm)) {
-            fixedSearchTerm = fixKeyboardLayout(normalizedSearchTermEn, enToRuLayout);
-        } else if (hasCyrillic(normalizedSearchTerm) && !hasLatin(normalizedSearchTerm)) {
-            fixedSearchTerm = normalizedSearchTermRu;
-        }
-        // Извлекаем числа из запроса
-        const searchNumbers = extractNumbers(normalizedSearchTermEn);
+        updateFilmCount(this.value); // Обновляем количество фильмов при изменении поля поиска
+    });
 
-        const movies = document.querySelectorAll(".hero1"); // Все блоки фильмов
-        let found = false; // Флаг, который будет показывать, найден ли хотя бы один фильм
-        // Перебираем все блоки фильмов
-        movies.forEach(movie => {
-            const title = movie.querySelector(".item1").textContent.toLowerCase(); // Название фильма
-            // Очищаем название фильма от лишних символов
-            const cleanedTitle = processSearchQuery(title);
-            // Проверка на точное совпадение с поисковым запросом
-            if (cleanedTitle === normalizedSearchTermEn || cleanedTitle === normalizedSearchTermRu || cleanedTitle === fixedSearchTerm) {
-                movie.style.display = "block"; // Показываем фильм, если найдено точное совпадение
-                found = true;
-            } else {
-                // Применяем другие методы поиска
-                const titleIncludesSearchTerm = cleanedTitle.includes(normalizedSearchTermEn) || cleanedTitle.includes(normalizedSearchTermRu);
-                if (titleIncludesSearchTerm) {
-                    // Если в запросе есть числа и они совпадают с числом в названии
-                    if (searchNumbers.length > 0) {
-                        const movieNumber = extractNumbers(cleanedTitle);
-                        movie.style.display = movieNumber.some(num => parseInt(num) >= parseInt(searchNumbers[0])) ? "block" : "none";
-                        found = movie.style.display === "block";
-                    } else {
-                        movie.style.display = "block"; // Показываем, если название совпало
-                        found = true;
-                    }
-                } else {
-                    movie.style.display = "none"; // Скрываем, если не совпадает
-                }
-            }
-        });
-        // Если фильмы не найдены, показываем hero3
-        document.querySelector(".hero3").style.display = found ? "none" : "block";
+    // Вызываем функцию для отображения общего количества фильмов при загрузке страницы
+    document.addEventListener("DOMContentLoaded", function() {
+        updateFilmCount(); // Сразу при загрузке отображаем количество всех фильмов
     });
 </script>
 
