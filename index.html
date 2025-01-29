@@ -54,161 +54,6 @@
         </svg></span><div id="count-film">0</div></div>
 </div> -->
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-    /* Фон для страницы */
-    body {
-        background: var(--PageColor); /* Чёрный фон */
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
-
-    #count-film{
-        color: #c9b1ff; 
-        font-weight: 900;
-        font-size: 14px;
-        position: absolute; 
-        right: 8px;
-        padding-top: 5px;
-        text-align: center;
-        width: 60px;
-        height: 30px;
-        top: 8px;
-        border-radius: 3px;
-        background: #171c2a;
-    }
-    #count-film::before{
-        color: #6cc4ff; 
-        font-size: 10px;
-        content: 'Найдено';
-        font-weight: 600;
-        position: absolute; 
-        right: 0px;
-        top: -10px;
-        padding-top: 4px;
-        text-align: center;
-        width: 60px;
-        height: 30px;
-    }
-    .css-info{
-        font-family: Rubik, serif !important;
-        font-weight: 100;
-        text-align: center; 
-        font-size: 15px;
-        width: 350px;
-        margin: 0 auto;
-        background: #380404;
-        border-radius: 3px; 
-        color: rgb(255, 109, 109); 
-        padding: 5px; 
-        border: 1px solid #7a1313;
-    }
-    /* Обертка для поля ввода и иконки */
-    .search-wrapper {
-        position: relative;
-        width: 100%;
-    }
-    
-    /* Поле ввода */
-    #searchBar {
-        font-family: Rubik, serif !important;
-        background: #020817;
-        width: 100%;
-        padding: 10px 75px 10px 45px; /* Отступы внутри поля с учётом места для иконки */
-        font-size: 16px;
-        margin-bottom: 20px;
-        font-weight: 600;
-        color: #c1cfff;
-        border: 1px solid #1e293b;
-        border-radius: 3px;
-        outline: none;
-        transition: border-color 0.1s ease;
-        line-height: 1.5; /* Высота строки для выравнивания текста */
-        display: flex;
-        align-items: center; /* Выравнивание текста по вертикали */
-    }
-    
-    /* Иконка лупы */
-    .search-icon {
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        color: #1e293b;
-        background-color: #171c2a;
-        padding: 5px;
-        border-radius: 3px;
-        /* transform: translateY(-50%); */
-        display: flex;
-        /* align-items: center; */
-        pointer-events: none;
-    }
-    
-    /* Стили для поля ввода при фокусе */
-    #searchBar:focus,
-    #searchBar:focus:hover {
-        border-color: #6374b3; /* Убираем эффект ховера при фокусе */
-    }
-    /* Стили для поля ввода при фокусе */
-    #searchBar:hover {
-        border-color: #32486b;
-    }
-    
-    /* Плейсхолдер (текст по умолчанию) */
-    #searchBar::placeholder {
-        color: #597095;
-        /* font-style: italic; */
-    }
-    
-    /* Адаптация для мобильных устройств */
-    @media (max-width: 600px) {
-        #searchBar {
-            font-size: 14px;
-        }
-    }
-    img, svg {
-        --color: #90a8ff;
-        fill: var(--color);
-        stroke: var(--color); /* Цвет обводки */
-        stroke-width: 1px; /* Толщина обводки */
-        color: #1e293b;
-    }
-
-    .autocomplete-box {
-        animation: none;
-        position: absolute;
-        background: #171c2a;
-        border: 1px solid #6374b3;
-        max-height: 200px;
-        max-width: 600px; /* Увеличиваем ширину для более централизованного вида */
-        margin-left: 50%;
-        transform: translateX(-50%); /* Выравнивание по центру */
-        overflow-y: auto;
-        width: 100%;
-        z-index: 18888000 !important;
-        box-shadow: 0px 0px 5px 5px rgba(30, 41, 59, 0.7);
-        border-radius: 3px;
-    }
-
-
-.autocomplete-item {
-    color: #c1cfff;
-    padding: 0px 10px;
-    background: #384e7250;
-    margin: 2px;
-    cursor: pointer;
-    /* transition: background 0.2s; */
-    font-size: 14px;
-}
-
-.autocomplete-item strong {
-    color: #a7fff0;
-}
-
-.autocomplete-item:hover {
-    background: #263d61;
-}
-</style>
-
 <section class="hero2"></section>
 <div class="container">
     <div class="search-wrapper">
@@ -1330,7 +1175,264 @@
     <a class="buttonn" href="?id=1">Смотреть</a>
 </section>
 
-<script type="text/javascript" src="./index.js"></script>
+<script>
+    // Функция для перенаправления с параметром id
+    function redirectToPageWithId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        
+        if (id) {
+            window.location.href = `http://localhost/pages/${id}`;
+        }
+    }
+    // Вызов функции при загрузке страницы
+    document.addEventListener("DOMContentLoaded", function() {
+        redirectToPageWithId();
+    });
+    // Функции для обработки поиска (по вашему предыдущему коду)
+    const enToRuLayout = {
+        q: 'й', w: 'ц', e: 'у', r: 'к', t: 'е', y: 'н', u: 'г', i: 'ш', o: 'щ',
+        p: 'з', '[': 'х', ']': 'ъ', a: 'ф', s: 'ы', d: 'в', f: 'а', g: 'п', h: 'р',
+        j: 'о', k: 'л', l: 'д', ';': 'ж', "'": 'э', z: 'я', x: 'ч', c: 'с', v: 'м',
+        b: 'и', n: 'т', m: 'ь', ',': 'б', '.': 'ю', '/': '.',
+        
+        Q: 'Й', W: 'Ц', E: 'У', R: 'К', T: 'Е', Y: 'Н', U: 'Г', I: 'Ш', O: 'Щ',
+        P: 'З', '{': 'Х', '}': 'Ъ', A: 'Ф', S: 'Ы', D: 'В', F: 'А', G: 'П', H: 'Р',
+        J: 'О', K: 'Л', L: 'Д', ':': 'Ж', '"': 'Э', Z: 'Я', X: 'Ч', C: 'С', V: 'М',
+        B: 'И', N: 'Т', M: 'Ь', '<': 'Б', '>': 'Ю', '?': '.'
+    };
+    const ruToEnLayout = Object.fromEntries(Object.entries(enToRuLayout).map(([key, value]) => [value, key]));
+    // Функция для исправления раскладки
+    function fixKeyboardLayout(text, layoutMap) {
+        return text.split('').map(char => layoutMap[char] || char).join('');
+    }
+    // Функция для очистки строки от пробелов и спецсимволов
+    function processSearchQuery(query) {
+        return fixKeyboardLayout(query, ruToEnLayout).replace(/[^a-zA-Zа-яА-Я0-9]/g, '').toLowerCase();
+    }
+    // Функция для обновления количества фильмов и подсказок
+    function updateFilmCount(searchTerm = "") {
+        const movies = document.querySelectorAll(".hero1");
+        let found = 0;
+        let suggestions = [];
+        
+        const autocompleteBox = document.getElementById("autocomplete-box");
+        autocompleteBox.innerHTML = "";
+        
+        if (searchTerm.trim() === "") {
+            found = movies.length;
+        } else {
+            movies.forEach(movie => {
+                const title = movie.querySelector(".item1").textContent;  // Не преобразуем в lowerCase
+                const cleanedTitle = processSearchQuery(title);
+                
+                const normalizedSearchTermEn = processSearchQuery(searchTerm);
+                const normalizedSearchTermRu = fixKeyboardLayout(normalizedSearchTermEn, enToRuLayout);
+                
+                if (cleanedTitle.includes(normalizedSearchTermEn) || cleanedTitle.includes(normalizedSearchTermRu)) {
+                    movie.style.display = "block";
+                    found++;
+                    
+                    if (suggestions.length < 500 && !suggestions.includes(title)) {
+                        suggestions.push(title);  // Оставляем оригинальный регистр
+                    }
+                } else {
+                    movie.style.display = "none";
+                }
+            });
+        }
+        
+        document.getElementById("count-film").textContent = `${found}`;
+        document.querySelector(".hero3").style.display = found === 0 ? "block" : "none";
+        
+        suggestions.forEach(suggestion => {
+            const div = document.createElement("div");
+            div.classList.add("autocomplete-item");
+            
+            const index = suggestion.toLowerCase().indexOf(searchTerm.toLowerCase());
+            if (index !== -1) {
+                const beforeMatch = suggestion.slice(0, index);
+                const match = suggestion.slice(index, index + searchTerm.length);
+                const afterMatch = suggestion.slice(index + searchTerm.length);
+                div.innerHTML = `${beforeMatch}<strong>${match}</strong>${afterMatch}`;
+            } else {
+                div.textContent = suggestion;  // Оставляем в исходном регистре
+            }
+            
+            div.addEventListener("click", () => {
+                document.getElementById("searchBar").value = suggestion;
+                updateFilmCount(suggestion);
+            });
+            autocompleteBox.appendChild(div);
+        });
+        
+        // Добавлена проверка, чтобы скрыть поле подсказок, если оно пустое
+        autocompleteBox.style.display = suggestions.length > 0 ? "block" : "none";
+    }
+
+    const searchBar = document.getElementById("searchBar");
+    searchBar.addEventListener("input", function() {
+        updateFilmCount(this.value);
+    });
+    searchBar.addEventListener("focus", function() {
+        const autocompleteBox = document.getElementById("autocomplete-box");
+        // Показываем подсказки только если они есть
+        autocompleteBox.style.display = autocompleteBox.childElementCount > 0 ? "block" : "none";
+    });
+    searchBar.addEventListener("blur", function() {
+        setTimeout(() => document.getElementById("autocomplete-box").style.display = "none", 200);
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        updateFilmCount();
+        redirectToPageWithId();  // Переадресация с id
+    });
+</script>
+
+<!-- <script type="text/javascript" src="./index.js"></script> -->
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+    /* Фон для страницы */
+    body {
+        background: var(--PageColor); /* Чёрный фон */
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    #count-film{
+        color: #c9b1ff; 
+        font-weight: 900;
+        font-size: 14px;
+        position: absolute; 
+        right: 8px;
+        padding-top: 5px;
+        text-align: center;
+        width: 60px;
+        height: 30px;
+        top: 8px;
+        border-radius: 3px;
+        background: #171c2a;
+    }
+    #count-film::before{
+        color: #6cc4ff; 
+        font-size: 10px;
+        content: 'Найдено';
+        font-weight: 600;
+        position: absolute; 
+        right: 0px;
+        top: -10px;
+        padding-top: 4px;
+        text-align: center;
+        width: 60px;
+        height: 30px;
+    }
+    .css-info{
+        font-family: Rubik, serif !important;
+        font-weight: 100;
+        text-align: center; 
+        font-size: 15px;
+        width: 350px;
+        margin: 0 auto;
+        background: #380404;
+        border-radius: 3px; 
+        color: rgb(255, 109, 109); 
+        padding: 5px; 
+        border: 1px solid #7a1313;
+    }
+    /* Обертка для поля ввода и иконки */
+    .search-wrapper {
+        position: relative;
+        width: 100%;
+    }
+    /* Поле ввода */
+    #searchBar {
+        font-family: Rubik, serif !important;
+        background: #020817;
+        width: 100%;
+        padding: 10px 75px 10px 45px; /* Отступы внутри поля с учётом места для иконки */
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #c1cfff;
+        border: 1px solid #1e293b;
+        border-radius: 3px;
+        outline: none;
+        transition: border-color 0.1s ease;
+        line-height: 1.5; /* Высота строки для выравнивания текста */
+        display: flex;
+        align-items: center; /* Выравнивание текста по вертикали */
+    }
+    /* Иконка лупы */
+    .search-icon {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        color: #1e293b;
+        background-color: #171c2a;
+        padding: 5px;
+        border-radius: 3px;
+        /* transform: translateY(-50%); */
+        display: flex;
+        /* align-items: center; */
+        pointer-events: none;
+    }
+    /* Стили для поля ввода при фокусе */
+    #searchBar:focus,
+    #searchBar:focus:hover {
+        border-color: #6374b3; /* Убираем эффект ховера при фокусе */
+    }
+    /* Стили для поля ввода при фокусе */
+    #searchBar:hover {
+        border-color: #32486b;
+    }
+    /* Плейсхолдер (текст по умолчанию) */
+    #searchBar::placeholder {
+        color: #597095;
+        /* font-style: italic; */
+    }
+    /* Адаптация для мобильных устройств */
+    @media (max-width: 600px) {
+        #searchBar {
+            font-size: 14px;
+        }
+    }
+    img, svg {
+        --color: #90a8ff;
+        fill: var(--color);
+        stroke: var(--color); /* Цвет обводки */
+        stroke-width: 1px; /* Толщина обводки */
+        color: #1e293b;
+    }
+    .autocomplete-box {
+        animation: none;
+        position: absolute;
+        background: #171c2a;
+        border: 1px solid #6374b3;
+        max-height: 200px;
+        max-width: 600px; /* Увеличиваем ширину для более централизованного вида */
+        margin-left: 50%;
+        transform: translateX(-50%); /* Выравнивание по центру */
+        overflow-y: auto;
+        width: 100%;
+        z-index: 18888000 !important;
+        box-shadow: 0px 0px 5px 5px rgba(30, 41, 59, 0.7);
+        border-radius: 3px;
+    }
+    .autocomplete-item {
+        color: #c1cfff;
+        padding: 0px 10px;
+        background: #384e7250;
+        margin: 2px;
+        cursor: pointer;
+        /* transition: background 0.2s; */
+        font-size: 14px;
+    }
+    .autocomplete-item strong {
+        color: #a7fff0;
+    }
+    .autocomplete-item:hover {
+        background: #263d61;
+    }
+</style>
 
 <br><br></main></footer></div>
 </body></html>
