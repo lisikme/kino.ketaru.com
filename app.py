@@ -237,6 +237,7 @@ f"""<!-- Форматирование -->
 <link rel="stylesheet" href="../../css/SectionBox.css">  <!-- Секции блоков -->
 <link rel="stylesheet" href="../../css/VideoPlayer.css"> <!-- Видео блок -->
 <link rel="stylesheet" href="../../css/Animation.css">   <!-- Анимации -->
+<link rel="stylesheet" href="../../css/Head.css">       <!-- Дизайн шапки сайта 2.0 --> 
 
 <link rel="stylesheet" href="../../css/Root.css">        <!-- Конфигурация -->
 
@@ -245,16 +246,13 @@ f"""<!-- Форматирование -->
 
 <!-- Шапка страницы -->
 <div class="body-wrap">
-    <header class="site-header">
-        <div class="container">
-            <div class="site-header-inner">
-                <div class="brand header-brand">
-                    <ul class="footer-links list-reset">
-                        <h4 class="hero-title mt-0">
-                            <a href="../../">
-                                <span class="LogoBox"><ui class="LogoName"></span></a><ui class="LogoPage"><ui class="LogoVersion"></ui></h4>
-                            </head>
-                        </header>
+    <header id="site-header">
+        <type id="page-name">КиноОнлайн <span id="nam">Каталог фильмов</span> <span id="rel">БЕТА</span></type>
+        <div id="site-header-box">
+            <a href="https://ketaru.com"><div id="site-logo-box"><img id="site-logo-img" src="https://ketaru.com/corp.png">
+                <name id="site-logo-name"><span id="ketaru">Ketaru</span><span id="corp">Corp</span></name></div></a>
+            </div>
+        </header>
 
 <!-- каталог фильмов -->
 <section class="hero2"></section>
@@ -265,7 +263,8 @@ f"""<!-- Форматирование -->
     {Button}</section><section class="hero1"><div class="container"><p class="buttonns"><p>
     <iframe class="fonv" src="{Видео}" frameborder="0" allowfullscreen></iframe></div></div></div>       
     <meta property="og:title" content="{Имя}">
-    <title>KetaRu | {Имя}</title>
+    <title>KR.Corp | {Имя}</title>
+    <meta property="og:image" content="https://kino.ketaru.com/pages/{Файлов}/image.png">
 </section>
 
 </html>""")

@@ -1,0 +1,478 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+/* Фон для страницы */
+body {
+    background: var(--PageColor); /* Чёрный фон */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+#count-film{
+    color: #c9b1ff; 
+    font-weight: 900;
+    font-size: 14px;
+    position: absolute; 
+    right: 8px;
+    padding-top: 6px;
+    text-align: center;
+    width: 60px;
+    height: 30px;
+    top: 8px;
+    border-radius: 3px;
+    background: #171c2a;
+}
+#count-film::before{
+    color: #6cc4ff; 
+    font-size: 10px;
+    content: 'Найдено';
+    font-weight: 600;
+    position: absolute; 
+    right: 0px;
+    top: -12px;
+    padding-top: 4px;
+    text-align: center;
+    width: 60px;
+    height: 30px;
+}
+.css-info{
+    font-family: Rubik, serif !important;
+    font-weight: 100;
+    text-align: center; 
+    font-size: 15px;
+    width: 350px;
+    margin: 0 auto;
+    background: #380404;
+    border-radius: 3px; 
+    color: rgb(255, 109, 109); 
+    padding: 5px; 
+    border: 1px solid #7a1313;
+}
+/* Обертка для поля ввода и иконки */
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
+/* Поле ввода */
+#searchBar {
+    animation: none;
+    font-family: Rubik, serif !important;
+    background: #020817;
+    width: 100%;
+    padding: 10px 123px 10px 45px; /* Отступы внутри поля с учётом места для иконки */
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #c1cfff;
+    border: 1px solid #1e293b;
+    border-radius: 3px;
+    outline: none;
+    transition: border-color 0.1s ease;
+    line-height: 1.5; /* Высота строки для выравнивания текста */
+    display: flex;
+    align-items: center; /* Выравнивание текста по вертикали */
+}
+/* Иконка лупы */
+.search-icon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: #1e293b;
+    background-color: #171c2a;
+    padding: 5px;
+    border-radius: 3px;
+    /* transform: translateY(-50%); */
+    display: flex;
+    /* align-items: center; */
+    pointer-events: none;
+}
+/* Стили для поля ввода при фокусе */
+#searchBar:focus,
+#searchBar:focus:hover {
+    border-color: #6374b3; /* Убираем эффект ховера при фокусе */
+}
+/* Стили для поля ввода при фокусе */
+#searchBar:hover {
+    border-color: #32486b;
+}
+/* Плейсхолдер (текст по умолчанию) */
+#searchBar::placeholder {
+    color: #597095;
+    /* font-style: italic; */
+}
+/* Адаптация для мобильных устройств */
+@media (max-width: 600px) {
+    #searchBar {
+        font-size: 14px;
+    }
+}
+img, svg {
+    --color: #90a8ff;
+    fill: var(--color);
+    stroke: var(--color); /* Цвет обводки */
+    stroke-width: 1px; /* Толщина обводки */
+    color: #1e293b;
+}
+.autocomplete-box {
+    color: #7a1313;
+    animation: none;
+    position: absolute;
+    background: #171c2a;
+    border: 1px solid #6374b3;
+    max-height: 200px;
+    max-width: 600px; /* Увеличиваем ширину для более централизованного вида */
+    margin-left: 50%;
+    transform: translateX(-50%); /* Выравнивание по центру */
+    overflow-y: auto;
+    width: 100%;
+    z-index: 18888000 !important;
+    box-shadow: 0px 0px 5px 5px rgba(30, 41, 59, 0.7);
+    border-radius: 3px;
+    padding: 6px 0px;
+}
+.autocomplete-box::-webkit-scrollbar{
+    width: 8px;
+    background-color: #121722;
+}
+.autocomplete-box::-webkit-scrollbar-thumb{
+    background-color: var(--ColorNone);
+    border-radius: 3px;
+    min-height: 30px;
+    width: var(--Width);
+    border: 2px solid #121722;
+
+}
+.autocomplete-box::-webkit-scrollbar-thumb:hover{
+    background-color: var(--ColorCursor);
+}
+.autocomplete-item {
+    font-family: Rubik, serif !important;
+    font-weight: 400 !important;
+    animation: none;
+    color: #c1cfff;
+    padding: 0px 10px;
+    background: #020817;
+    /* border: 1px solid #1e293b; */
+    margin: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    /* transition: background 0.2s; */
+    font-size: 16px;
+    /* transition: all 0.3s ease !important; */
+}
+.autocomplete-item strong {
+    font-family: Rubik, serif !important;
+    font-weight: 400 !important;
+    animation: none;
+    color: #ffee83;
+}
+.autocomplete-item:hover {
+    animation: none;
+    background: #304b77;
+}
+#clearSearch{
+    font-family: Rubik, serif !important;
+    position: absolute;
+    height: 30px;
+    width: 40px;
+    z-index: 100;
+    right: 75px;
+    background: #380404;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    top: 8px;
+    cursor: pointer;
+}
+#clearSearch:hover{
+    font-family: Rubik, serif !important;
+    position: absolute;
+    height: 30px;
+    width: 40px;
+    z-index: 100;
+    right: 75px;
+    background: #550808;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    top: 8px;
+}
+.search-clear svg{
+    font-family: Rubik, serif !important;
+    /* background: #ffb4b4 !important; */
+    --color: #ff6d6d;
+    fill: var(--color);
+    stroke: var(--color); /* Цвет обводки */
+    stroke-width: 1px; /* Толщина обводки */
+    color: #1e293b;
+    left: -1px;
+    position: relative;
+    transform: scale(2.2);
+}
+#home-button{
+    font-family: Rubik, serif !important;
+    background: #ff6d6d;
+    border-radius: 3px;
+    border: 0;
+    font-size: 25px;
+    font-weight: 900;
+    padding: 5px 20px; 
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+#home-button:hover{
+    background: #ff8a8a;
+}
+*{
+    font-family: Rubik, serif !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Commissioner&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+#site-bg{
+    background: #0d1218;
+}
+#site-header{
+    height: 58px;
+    background: #020817;
+    margin: 50% auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #1e293b;
+    box-shadow: 2px 2px 4px #080c0f70;
+}
+#site-header-box{
+    padding: 10px 10px 5px 10px;
+    max-width: 1315px;
+    height: 58px;
+    margin: 50% auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#site-logo-box{
+    background: #1e293b;
+    display: inline-flex;
+    padding: 0px;
+    border-radius: 5px;
+    padding: 4px;
+}
+#site-logo-img{
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    /* position: absolute; */
+}
+#site-logo-name{
+    font-family: onest !important;
+    /* font-family: 'Quicksand', "Comfortaa" !important; */
+    /* font-family: 'Jura', sans-serif; */
+    /* font-family: 'Calibri'; */
+    /* font-family: 'Alegreya Sans SC', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Manrope', sans-serif; */
+    /* font-family: 'Overpass'; */
+    color: #00ffea;
+    font-weight: 900 !important;
+    padding: 0px 5px 0px 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 0px; 
+    letter-spacing: 1px;
+    padding-top: 15px;
+    position: relative;
+    
+}
+#ketaru{
+    font-family: onest !important;
+    color: #ffc9ff !important;
+    font-weight: 900;
+    position: relative;
+    top: -7px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+#corp{
+    font-family: onest !important;
+    color: #eeff8b !important;
+    position: absolute;
+    left: 11px;
+    bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+#page-name{
+    left: 0px;
+    /* font-family: 'Quicksand', "Comfortaa"; */
+    /* font-family: 'Jura', sans-serif; */
+    /* font-family: 'Calibri'; */
+    font-family: 'Alegreya Sans SC', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Manrope', sans-serif; */
+    /* font-family: 'Overpass'; */
+    font-family: onest !important;
+    color: #9ebcff;
+    font-weight: 600;
+    /* text-align: center; */
+    vertical-align: middle;
+    line-height: 10px; 
+    padding-top: 0px;
+    text-align: center;
+    width: 100%;
+    top: 24px;
+    position: absolute;
+}
+html, body {font-family: 'Alegreya Sans SC', sans-serif; margin: 0; padding: 0; color: #fff;}
+main{
+    font-family: 'Alegreya Sans SC', sans-serif;
+    padding: 15px 25px;
+}
+main> *, #site-logo-box{
+    transform: translateX(); 
+    animation: AnimX .5s forwards;
+}
+#page-name{
+    animation: AnimY .5s forwards;
+}
+header{
+    animation: none;
+    transform: translateX(0); 
+}
+*:hover{
+    transition: .2s infinite linear;
+}
+@keyframes AnimX {
+    0%   {
+        transform: translateX(-30%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes AnimY {
+    0%, 50% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+A, A:visited, A:active{
+    color: #fff !important;
+}
+#projects-block{
+    background: #2b427d;
+    border: 1px solid #364758;
+    text-align: center;
+    /* padding: 1px 1px; */
+    border-radius: 3px;
+    /* width: 500px; */
+    max-width: 700px;
+    margin: 50% auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#projects-panel{
+    text-align: left;
+    border-top: 1px solid #364758;
+    background: #141c24;
+    padding: 5px 10px;
+    border-radius: 0 0 3px 3px;
+    /* width: 500px; */
+}
+#pjbox{
+    background: #273449;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px 0;
+    transition: all .2s;
+    box-shadow: 3px 3px 4px #080c0f;
+}
+#pjbox:hover{
+    background: #3a4c69;
+    box-shadow: 1px 1px 4px #080c0f;
+}
+#pjimg{
+    background: #131924;
+    border-radius: 5px;
+    border: 1px solid #364758;
+    height: 40px;
+    width: 40px;
+}
+#pjname{
+    font-size: 22px;
+    left: 54px;
+    top: -1px;
+    position: absolute;
+}
+#pjdec{
+    background: #0f1720;
+    line-height: 10px;
+    left: 53px;
+    top: 26px;
+    color: #00ffea;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    position: absolute;
+}
+:root {
+--NamePage: "Radio";
+--VerPage: "KetaRu Web";
+}
+#rel{
+    color: #a0d6ff;
+    background: #222734;
+    font-family: rubik !important;
+    padding: 5px 8px 4px 8px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 400;
+    top: 1px;
+    position: absolute;
+    margin-left: 10px;
+}
+#nam{
+    position: absolute;
+    display:inline-block;
+    left: 0px;
+    font-size: 14px;
+    
+    width: 100%;
+    top: 16px;
+    font-family: onest !important;
+    color: #ffef5b;
+}
+#page-name{
+    font-size: 20px !important;
+    top: 5px;
+    position: absolute !important;
+    top: 18px !important;
+    font-family: 'onest' !important;
+}
+#inf{
+    backdrop-filter: blur(2vh);
+    background: #ffffff30;
+    border: 1px solid #ffffff30;
+    font-family: onest;
+    width: 430px;
+    font-size: 18px;
+    margin: 0 auto;
+    top: calc(50% - 170px);
+    left:  calc(50% - 216px);
+    /* left: -4px; */
+    font-weight: 600;
+    padding: 5px 0px;
+    text-align: center;
+    border-radius: 3px;
+    position: relative;
+    position: absolute;
+}
