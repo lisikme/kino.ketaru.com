@@ -48,7 +48,7 @@
         <type id="page-name">КиноОнлайн <span id="nam">Каталог фильмов</span> <span id="rel">БЕТА</span></type>
         <div id="site-header-box">
             <a href="https://ketaru.com"><div id="site-logo-box"><img id="site-logo-img" src="https://ketaru.com/corp.png">
-                <name id="site-logo-name">Ketaru<span id="corp">Corp</span></name></div></a>
+                <name id="site-logo-name"><span id="ketaru">Ketaru</span><span id="corp">Corp</span></name></div></a>
             </div>
         </header>
 
@@ -82,7 +82,6 @@
     </div>
 </div>
 <div id="autocomplete-box" style="display: none;" class="autocomplete-box"></div>
-
 <section class="hero3" style="position: relative; display: none;" id="outdatedMessage">
     <div class="container">
         <div id="outdatedMessage" class="css-info">
@@ -91,6 +90,7 @@
         </div>
     </div>
 </section>
+<div id="filmslist">
 
 <section class="hero1"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="film"><h1 class="items">
     <span class="item1">Головоломка 2</span><p>
@@ -1242,22 +1242,59 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 <script>
+
+
+const FilmsList = [
+    {
+        'Title': 'Головоломка 3',
+        'AgeLimit': '16+',
+        'VideoUrl': 'https://polynoy-as.newplayjj.com/3'
+    },
+    {
+        'Title': 'Головоломка 2',
+        'AgeLimit': '6+',
+        'VideoUrl': 'https://polynoy-as.newplayjj.com/2'
+    },
+    {
+        'Title': 'Головоломка 1',
+        'AgeLimit': '0+',
+        'VideoUrl': 'https://polynoy-as.newplayjj.com/1'
+    },
+];
+
+// Функция для формирования HTML-списка фильмов
+function generateFilmList() {
+    const container = document.querySelector('#filmslist');  // Находим контейнер, куда будем добавлять фильмы
+    let filmsHTML = '';  // Строка для формирования HTML-кода
+    
+
+    FilmsList.forEach((film, index) => {
+        const filmIndex = FilmsList.length - index;  // Переворачиваем порядок номеров фильмов
+
+        filmsHTML += `
+            <section class="hero1"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="film"><h1 class="items">
+                <span class="item1">${film.Title}</span><p>
+                <span class="item2">${film.AgeLimit}</span></p></h1></div>
+                <div class="im"><img src="./pages/${filmIndex}/image.png" class="image" loading="lazy" onerror="this.style.visibility = 'hidden'" width="170px" height = "250px"><div class="hero-cta">
+                <a class="buttonn" href="./pages/${filmIndex}">Смотреть</a>
+            </section>
+        `;
+    });
+
+    container.innerHTML = filmsHTML;  // Вставляем сформированный HTML в контейнер
+}
+
+// Вызов функции для генерации списка (вкл/выкл)
+// generateFilmList();
+
+
+
+
+
 // Функция для отображения или скрытия кнопки очистки
 function toggleClearButton() {
     const searchBar = document.getElementById('searchBar');
@@ -1731,7 +1768,7 @@ document.addEventListener('DOMContentLoaded', function() {
         /* font-family: 'Manrope', sans-serif; */
         /* font-family: 'Overpass'; */
         color: #00ffea;
-        font-weight: 600;
+        font-weight: 900 !important;
         padding: 0px 5px 0px 10px;
         text-align: center;
         vertical-align: middle;
@@ -1739,10 +1776,25 @@ document.addEventListener('DOMContentLoaded', function() {
         letter-spacing: 1px;
         padding-top: 15px;
         position: relative;
+        
+    }
+    #ketaru{
+        font-family: onest !important;
+        color: #ffc9ff !important;
+        font-weight: 900;
+        position: relative;
+        top: -7px;
+        text-transform: uppercase;
+        font-size: 18px;
     }
     #corp{
         font-family: onest !important;
-        color: #ffef5b !important;
+        color: #eeff8b !important;
+        position: absolute;
+        left: 11px;
+        bottom: 6px;
+        font-size: 12px;
+        text-transform: uppercase;
     }
     #page-name{
         left: 0px;
