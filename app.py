@@ -251,7 +251,7 @@ while Видео in '':
             <span id="namm">КиноОнлайн<span id="rel">БЕТА</span></span>
             <span id="nam">Каталог фильмов</span></type>
         <div id="site-header-box">
-            <a href="https://ketaru.com">
+            <a href="../../">
                 <div id="site-logo-box">
                     <img id="site-logo-img" src="https://ketaru.com/corp.png">
                     <name id="site-logo-name">
