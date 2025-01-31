@@ -213,8 +213,8 @@ while Видео in '':
     else:
         Видео1 = f'{Y}[link={Видео}]Ссылка[/link] {B}'
 
-Страница = (   
-f"""<!-- Форматирование -->
+Страница = (f"""
+<!-- Форматирование -->
 <!DOCTYPE html>
 <html lang="ru" class="no-js">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -224,7 +224,7 @@ f"""<!-- Форматирование -->
         <meta name="yandex-verification" content="2d8c1dcb18ad48b7"/>
         
 <!-- Интеграция Embed -->
-<meta property="og:site_name" content="KetaRu">
+<meta property="og:site_name" content="KR.Corp">
 <link rel="shortcut icon" href="https://i.imgur.com/tPQs4ZD.png">
 <meta property="og:image:width" content="170">
 <meta property="og:image:height" content="250">
@@ -247,12 +247,21 @@ f"""<!-- Форматирование -->
 <!-- Шапка страницы -->
 <div class="body-wrap">
     <header id="site-header">
-        <type id="page-name">КиноОнлайн <span id="nam">Каталог фильмов</span> <span id="rel">БЕТА</span></type>
+        <type id="page-name">
+            <span id="namm">КиноОнлайн<span id="rel">БЕТА</span></span>
+            <span id="nam">Каталог фильмов</span></type>
         <div id="site-header-box">
-            <a href="https://ketaru.com"><div id="site-logo-box"><img id="site-logo-img" src="https://ketaru.com/corp.png">
-                <name id="site-logo-name"><span id="ketaru">Ketaru</span><span id="corp">Corp</span></name></div></a>
-            </div>
-        </header>
+            <a href="https://ketaru.com">
+                <div id="site-logo-box">
+                    <img id="site-logo-img" src="https://ketaru.com/corp.png">
+                    <name id="site-logo-name">
+                        <span id="ketaru">Ketaru</span>
+                        <span id="corp">Corp</span>
+                    </name>
+                </div>
+            </a>
+        </div>
+    </header>
 
 <!-- каталог фильмов -->
 <section class="hero2"></section>
@@ -264,10 +273,11 @@ f"""<!-- Форматирование -->
     <iframe class="fonv" src="{Видео}" frameborder="0" allowfullscreen></iframe></div></div></div>       
     <meta property="og:title" content="{Имя}">
     <title>KR.Corp | {Имя}</title>
-    <meta property="og:image" content="https://kino.ketaru.com/pages/{Файлов}/image.png">
+        <meta property="og:image" content="https://kino.ketaru.com/pages/{Файлов}/image.png">
 </section>
 
-</html>""")
+</html>
+""")
 
 os.system('cls')
 print('   ')
