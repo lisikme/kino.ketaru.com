@@ -305,7 +305,9 @@ img, svg {
     text-transform: uppercase;
 }
 #page-name{
-    left: 0px;
+    left: 145px;
+    /* right: 0px; */
+    top: 24px;
     /* font-family: 'Quicksand', "Comfortaa"; */
     /* font-family: 'Jura', sans-serif; */
     /* font-family: 'Calibri'; */
@@ -320,9 +322,8 @@ img, svg {
     vertical-align: middle;
     line-height: 10px; 
     padding-top: 0px;
-    text-align: center;
-    width: 100%;
-    top: 24px;
+    /* text-align: center; */
+    /* width: 100%; */
     position: absolute;
 }
 html, body {font-family: 'Alegreya Sans SC', sans-serif; margin: 0; padding: 0; color: #fff;}
@@ -443,11 +444,11 @@ A, A:visited, A:active{
 #nam{
     position: absolute;
     display:inline-block;
-    left: 0px;
-    font-size: 14px;
+    left: 0.5px;
+    font-size: 12px;
     
     width: 100%;
-    top: 16px;
+    top: 15px;
     font-family: onest !important;
     color: #ffef5b;
 }
