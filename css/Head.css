@@ -305,9 +305,7 @@ img, svg {
     text-transform: uppercase;
 }
 #page-name{
-    left: 145px;
-    /* right: 0px; */
-    top: 24px;
+    left: 0px;
     /* font-family: 'Quicksand', "Comfortaa"; */
     /* font-family: 'Jura', sans-serif; */
     /* font-family: 'Calibri'; */
@@ -322,8 +320,9 @@ img, svg {
     vertical-align: middle;
     line-height: 10px; 
     padding-top: 0px;
-    /* text-align: center; */
-    /* width: 100%; */
+    text-align: center;
+    width: 100%;
+    top: 24px;
     position: absolute;
 }
 html, body {font-family: 'Alegreya Sans SC', sans-serif; margin: 0; padding: 0; color: #fff;}
@@ -433,30 +432,52 @@ A, A:visited, A:active{
     color: #a0d6ff;
     background: #222734;
     font-family: rubik !important;
-    padding: 5px 8px 4px 8px;
+    padding: 2px 8px;
+    height: 20px;
+    align-content: center;
     border-radius: 3px;
     font-size: 14px;
     font-weight: 400;
-    top: 1px;
-    position: absolute;
+    left: 4px;
+    top: 6px;
+    position: relative;
     margin-left: 10px;
 }
-#nam{
+#namm{
     position: absolute;
     display:inline-block;
-    left: 0.5px;
+    left: 149px;
+    font-size: 18px;
+    
+    /* width: 100%; */
+    top: 2px;
+    font-family: onest !important;
+    color: #9ebcff;
+}
+#nam{
+    white-space: nowrap;
+    position: absolute;
+    display:inline-block;
+    left: 150px;
     font-size: 12px;
     
-    width: 100%;
-    top: 15px;
+    /* width: 100%; */
+    top: 21px;
     font-family: onest !important;
     color: #ffef5b;
 }
 #page-name{
+    max-width: 1315px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    line-height: normal;
+    /* background: #00ffea; */
+    height: 100%;
     font-size: 20px !important;
-    top: 5px;
+    top: 8px;
     position: absolute !important;
-    top: 18px !important;
+    /* top: 18px !important; */
     font-family: 'onest' !important;
 }
 #inf{
@@ -474,6 +495,6 @@ A, A:visited, A:active{
     padding: 5px 0px;
     text-align: center;
     border-radius: 3px;
-    position: relative;
+    /* position: relative; */
     position: absolute;
 }
