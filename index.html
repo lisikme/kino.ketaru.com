@@ -1453,7 +1453,6 @@ function highlightText(originalText, searchTerm) {
         const ruVariant = char;
         // Собираем все возможные варианты
         const variants = generateRegexVariants(char);
-        console.log(variants)
         return `[${variants}]`;
     }).join('[^а-яА-ЯёЁa-zA-Z0-9]*');
     const regex = new RegExp(`(${pattern})`, 'gi');
