@@ -1383,7 +1383,7 @@ const enToRuLayout = {
     Q: 'Й', W: 'Ц', E: 'У', R: 'К', T: 'Е', Y: 'Н', U: 'Г', I: 'Ш', O: 'Щ',
     P: 'З', '{': 'Х', '}': 'Ъ', A: 'Ф', S: 'Ы', D: 'В', F: 'А', G: 'П', H: 'Р',
     J: 'О', K: 'Л', L: 'Д', ':': 'Ж', '"': 'Э', Z: 'Я', X: 'Ч', C: 'С', V: 'М',
-    B: 'И', N: 'Т', M: 'Ь', '<': 'Б', '>': 'Ю', '?': '.'
+    B: 'И', N: 'Т', M: 'Ь', '<': 'Б', '>': 'Ю', '?': '.', '^': ":"
 };
 const ruToEnLayout = Object.fromEntries(Object.entries(enToRuLayout).map(([key, value]) => [value, key]));
 
@@ -1397,22 +1397,67 @@ function processSearchQuery(query) {
     return fixKeyboardLayout(query, ruToEnLayout).replace(/[^a-zA-Zа-яА-Я0-9]/g, '').toLowerCase();
 }
 
-// Функция для подсветки текста в подсказках
-function highlightText(originalText, searchTerm) {
-    const fixedSearchTerm = fixKeyboardLayout(searchTerm, ruToEnLayout).toLowerCase();
-    const fixedSearchTermRu = fixKeyboardLayout(fixedSearchTerm, enToRuLayout);
 
-    const indexRu = originalText.toLowerCase().indexOf(fixedSearchTermRu);
-    const indexEn = originalText.toLowerCase().indexOf(fixedSearchTerm);
-    const index = indexRu !== -1 ? indexRu : indexEn;
 
-    if (index !== -1) {
-        const beforeMatch = originalText.slice(0, index);
-        const match = originalText.slice(index, index + fixedSearchTerm.length);
-        const afterMatch = originalText.slice(index + fixedSearchTerm.length);
-        return `${beforeMatch}<strong>${match}</strong>${afterMatch}`;
+function collectRelatedChars(char) {
+    const visited = new Set();
+    const queue = [char];
+    const related = new Set();
+    while (queue.length > 0) {
+        const current = queue.pop();
+        if (visited.has(current)) continue;
+        visited.add(current);
+        related.add(current);
+        const enVariant = ruToEnLayout[current];
+        if (enVariant && !visited.has(enVariant)) queue.push(enVariant);
+        const ruVariant = enToRuLayout[current];
+        if (ruVariant && !visited.has(ruVariant)) queue.push(ruVariant);
     }
-    return originalText;
+    return Array.from(related);
+}
+function getVariants(char) {
+    const baseChars = [char, char.toUpperCase(), char.toLowerCase()];
+    const allRelated = new Set();
+    for (const c of baseChars) {
+        collectRelatedChars(c).forEach(r => allRelated.add(r));
+    }
+    const withCases = [];
+    for (const r of allRelated) {
+        withCases.push(r.toUpperCase());
+        withCases.push(r.toLowerCase());
+    }
+    withCases.push(...allRelated);
+    const uniqueVariants = Array.from(new Set(withCases))
+        .filter(c => c && c !== '')
+        .map(c => c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    return uniqueVariants;
+}
+// Пример использования:
+const generateRegexVariants = (char) => {
+    const variants = getVariants(char);
+    return `${variants.join('')}`;
+};
+
+
+
+
+function highlightText(originalText, searchTerm) {
+    if (!searchTerm) return originalText;
+    const cleanedSearchTerm = searchTerm;
+    if (!cleanedSearchTerm) return originalText;
+    const pattern = cleanedSearchTerm.split('').map(char => {
+        const lowerChar = char.toLowerCase();
+        const upperChar = char.toUpperCase();
+        // Получаем варианты для текущего регистра и нижнего
+        const enVariant = char;
+        const ruVariant = char;
+        // Собираем все возможные варианты
+        const variants = generateRegexVariants(char);
+        console.log(variants)
+        return `[${variants}]`;
+    }).join('[^а-яА-ЯёЁa-zA-Z0-9]*');
+    const regex = new RegExp(`(${pattern})`, 'gi');
+    return originalText.replace(regex, '<strong>$1</strong>');
 }
 
 // Функция для обновления количества фильмов и подсказок
