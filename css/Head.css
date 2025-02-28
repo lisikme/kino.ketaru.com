@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 /* Фон для страницы */
 body {
     background: var(--PageColor); /* Чёрный фон */
@@ -7,7 +7,7 @@ body {
 }
 #count-film{
     color: #c9b1ff; 
-    font-weight: 900;
+    font-weight: 700;
     font-size: 14px;
     position: absolute; 
     right: 8px;

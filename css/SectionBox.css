@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 /* Отступы */
 .hero {
@@ -37,6 +37,12 @@
     border-radius: 3px;
 }
 /* background: #910500; */
+
+.items{
+    font-family: Rubik, serif !important;
+    height: 107px;
+    font-weight: 900 !important;
+}
 /* Название/ограниение */
 .name{
     font-family: Rubik, serif !important;
@@ -46,25 +52,19 @@
     top: 2.5px;
     position: relative;
     color: #fff;
-    font-weight: 600;
+    font-weight: 600 !important;
     margin-top: 48px;
     margin-bottom: 16px
-}
-
-/* Название/ограниение каталога */
-.items{
-    font-family: Rubik, serif !important;
-    height: 107px;
-    font-weight: 900 !important;
 }
 .item1{
     /* line-height: 1.2; */
     font-size: 25px;
     color: #fff;
-    font-weight: 900;
+    font-weight: 600;
     top: 1px;
     position: relative;
 }
+/* ограниение каталога */
 .item2 {
     font-family: Rubik, serif !important;
     font-size: 15px;
