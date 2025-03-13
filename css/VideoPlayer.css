@@ -1,21 +1,23 @@
 .buttonns:before{
     content: 'Окно для просмотра';
     position: relative;
-    border-radius: 3px 3px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
     padding: 5px 0 3px 0;
     border: 1px solid #1e293b;
-    background-color: #020817;
+    background: linear-gradient(0deg, #1e293b 0%, #171c2a 100%);
     display: inline-flex;
     text-decoration: none !important;
-    color: #ffffff;
-    font-weight: 600;
+    color: #84d6ff;
+    font-weight: 400;
     font-size: 16px;
     margin-bottom: -26px;
     display: block;
     text-align: center;
+    line-height: 20px;
     margin-left: auto;
     margin-right: auto;
     cursor: default;
+    border-top: 0;
 } 
 .fonv{
     position: relative;
@@ -25,8 +27,14 @@
     min-height: 220px;
     background: #000000;
     border: 1px solid #1e293b;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 3px 3px;
     animation: image 1s infinite;
+}
+.hero1 {
+    padding: 0px 0px 0px 0px;
+}
+.hero-copy {
+    border-radius: 3px 3px 0px 0px;
 }
 @keyframes fonv {
     0%   {background-color: #090c12}
