@@ -142,7 +142,6 @@
     padding: 6px 25px;
     display: inline-flex;
     text-decoration: none !important;
-    color: #84d6ff !important;
     font-weight: 100;
     cursor: pointer;
     left: 8px;
@@ -150,7 +149,7 @@
 } 
 .buttonn:hover {
     background-color: #182334;
-    color: #dbf3ff !important;
+    color: #84d6ff !important;
 }
 
 /* Разрешение выделения текста */
