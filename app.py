@@ -253,7 +253,7 @@ while Видео in '':
         <div id="site-header-box">
             <a href="../../">
                 <div id="site-logo-box">
-                    <img id="site-logo-img" src="https://ketaru.com/corp.png">
+                    <img id="site-logo-img" src="https://ketame.ru/corp.png">
                     <name id="site-logo-name">
                         <span id="ketaru">Ketaru</span>
                         <span id="corp">Corp</span>
@@ -273,7 +273,7 @@ while Видео in '':
     <iframe class="fonv" src="{Видео}" frameborder="0" allowfullscreen></iframe></div></div></div>       
     <meta property="og:title" content="{Имя}">
     <title>KR.Corp | {Имя}</title>
-        <meta property="og:image" content="https://kino.ketaru.com/pages/{Файлов}/image.png">
+        <meta property="og:image" content="https://kino.ketame.ru/pages/{Файлов}/image.png">
 </section>
 
 </html>
