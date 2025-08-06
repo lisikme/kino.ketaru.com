@@ -26,7 +26,7 @@ TAG1 = ['0+','6+','12+','16+','18+']
 TAG2 = ['0', '6', '12', '16', '18']
 
 print('   ')
-# cn.print(f'{R}─── KetaruDev ───', justify="center")
+# cn.print(f'{R}─── KetaruDev ───')
 
 num = 0
 Файлов = 1
@@ -41,11 +41,10 @@ FILE = 'image.png'
 
 def inform(имя, возраст, изображение, кнопка, видео):
     return cn.print(
-        f'\n{R}{"─────────────── Настройка сайта ───────────────":^68}\n\n'
+        f'\n'
         f'{IA}{R}┌────────────────────────────────────{A*3}{E} Панель разработчка {R}─{R}┐\n'
         f'{IA}{R}│{E} Название фильма: {имя}{R}│\n'
         f'{IA}{R}│{E} Возрастное ограничение: {возраст}{R}│\n'
-        
         f'{IA}{R}│{E} URL Изображения: {изображение}{R}│\n'
         # f'{IA}{R}│{E} URL Информация: {кнопка}{R}│\n'
         f'{IA}{R}│{E} URL Видео: {видео}{R}│\n'
@@ -237,7 +236,7 @@ while Видео in '':
 <link rel="stylesheet" href="../../css/SectionBox.css">  <!-- Секции блоков -->
 <link rel="stylesheet" href="../../css/VideoPlayer.css"> <!-- Видео блок -->
 <link rel="stylesheet" href="../../css/Animation.css">   <!-- Анимации -->
-<link rel="stylesheet" href="../../css/Head.css">       <!-- Дизайн шапки сайта 2.0 --> 
+<link rel="stylesheet" href="../../css/Head.css">        <!-- Дизайн шапки сайта 2.0 --> 
 
 <link rel="stylesheet" href="../../css/Root.css">        <!-- Конфигурация -->
 
@@ -281,7 +280,6 @@ while Видео in '':
 
 os.system('cls')
 print('   ')
-cn.print(f'{R}─── KetaruDev ───', justify="center")
 num = 0
 for dirpath, dirnames, filenames in os.walk("./pages"):
     for dirname in dirnames:
@@ -293,7 +291,7 @@ cn.print(Формат_0)
 
 ____________________Имя = F'{Имя:54}'
 _______________Возраст = F'{Возраст:41}'
-cn.print(f'{IA}{G}─── Фильм сгенерирован ───', justify="center")
+cn.print(f'')
 cn.print(f'{IA}{E}┌──────────────────────────────────────────────────────────────────{E}{E}{E}{E}{E}┐')
 cn.print(f'{IA}{E}│{W} Название: {R}{R}{R}{R}{R}{____________________Имя} {Y}{Y}{Y}{E}│')
 cn.print(f'{IA}{E}│{W} Возрастное ограниение: {R}{_______________Возраст} {Y}{Y}{Y}{E}│')
