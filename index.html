@@ -86,7 +86,7 @@
 </section>
 <div id="filmslist">
 
-<section class="hero1"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="film"><h1 class="items">
+<!-- <section class="hero1"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="film"><h1 class="items">
     <span class="item1">Зверополис 2 (2025)</span><p>
     <span class="item2">6+</span></p></h1></div>
     <div class="im"><img src="./pages/299/image.png" class="image" loading="lazy" onerror="this.style.visibility = 'hidden'" width="170px" height = "250px"><div class="hero-cta">
@@ -2177,33 +2177,15 @@
     <span class="item2">18+</span></h1></div>
     <div class="im"><img src="./pages/1/image.png" class="image" loading="lazy" onerror="this.style.visibility = 'hidden'" width="170px" height = "250px"><div class="hero-cta">
     <a class="buttonn" href="./pages/1">Смотреть</a>
-</section>
+</section> -->
 
 
 
 </div>
 
 
+<script src="./films.js"></script>
 <script>
-
-
-const FilmsList = [
-    {
-        'Title': 'Головоломка 3',
-        'AgeLimit': '16+',
-        'VideoUrl': 'https://polynoy-as.newplayjj.com/3'
-    },
-    {
-        'Title': 'Головоломка 2',
-        'AgeLimit': '6+',
-        'VideoUrl': 'https://polynoy-as.newplayjj.com/2'
-    },
-    {
-        'Title': 'Головоломка 1',
-        'AgeLimit': '0+',
-        'VideoUrl': 'https://polynoy-as.newplayjj.com/1'
-    },
-];
 
 // Функция для формирования HTML-списка фильмов
 function generateFilmList() {
@@ -2219,7 +2201,7 @@ function generateFilmList() {
                 <span class="item1">${film.Title}</span><p>
                 <span class="item2">${film.AgeLimit}</span></p></h1></div>
                 <div class="im"><img src="./pages/${filmIndex}/image.png" class="image" loading="lazy" onerror="this.style.visibility = 'hidden'" width="170px" height = "250px"><div class="hero-cta">
-                <a class="buttonn" href="./pages/${filmIndex}">Смотреть</a>
+                <a class="buttonn" href="./pages?id=${filmIndex}">Смотреть</a>
             </section>
         `;
     });
@@ -2228,7 +2210,7 @@ function generateFilmList() {
 }
 
 // Вызов функции для генерации списка (вкл/выкл)
-// generateFilmList();
+generateFilmList();
 
 
 

@@ -1,3 +1,4 @@
+
 <!-- Форматирование -->
 <!DOCTYPE html>
 <html lang="ru" class="no-js">
@@ -21,6 +22,7 @@
 <link rel="stylesheet" href="../css/SectionBox.css">  <!-- Секции блоков -->
 <link rel="stylesheet" href="../css/VideoPlayer.css"> <!-- Видео блок -->
 <link rel="stylesheet" href="../css/Animation.css">   <!-- Анимации -->
+<link rel="stylesheet" href="../css/Head.css">        <!-- Дизайн шапки сайта 2.0 --> 
 
 <link rel="stylesheet" href="../css/Root.css">        <!-- Конфигурация -->
 
@@ -29,90 +31,42 @@
 
 <!-- Шапка страницы -->
 <div class="body-wrap">
-    <header class="site-header">
-        <div class="container">
-            <div class="site-header-inner">
-                <div class="brand header-brand">
-                    <ul class="footer-links list-reset">
-                        <h4 class="hero-title mt-0">
-                            <a href="../">
-                                <span class="LogoBox"><ui class="LogoName"></span></a><ui class="LogoPage"><ui class="LogoVersion"></ui></h4>
-                            </head>
-                        </header>
+    <header id="site-header">
+        <type id="page-name">
+            <span id="namm">КиноОнлайн<span id="rel">БЕТА</span></span>
+            <span id="nam">Каталог фильмов</span></type>
+        <div id="site-header-box">
+            <a href="../../">
+                <div id="site-logo-box">
+                    <img id="site-logo-img" src="https://ketame.ru/corp.png">
+                    <name id="site-logo-name">
+                        <span id="ketaru">Ketaru</span>
+                        <span id="corp">Corp</span>
+                    </name>
+                </div>
+            </a>
+        </div>
+    </header>
 
 <!-- каталог фильмов -->
 <section class="hero2"></section>
 
 <section class="hero1"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="film">
-    <div class="name">Нет данных!<p class="number"></p></div></div><div class="im">
+    <div class="name">Не найдено<p class="number">0+</p></div></div><div class="im">
     <img src="image.png" class="image" loading="lazy" onerror="this.style.visibility = 'hidden'" width="170px" height = "250px"><div class="hero-cta">
     </section><section class="hero1"><div class="container"><p class="buttonns"><p>
-    <iframe class="fonv" src="" frameborder="0" allowfullscreen></iframe></div></div></div>       
-    <meta property="og:title" content="Игра в кальмара">
-    <title>KR.Corp | ...</title>
-        <meta property="og:image" content="https://kino.ketame.ru/pages/264/image.png">
+    <iframe class="fonv" src="https://blinds.stloadi.live/?token_movie=c56dd0fbea24fc9fb5e0425c35cc18&token=ad9960438558018a88cf827b4d73b1" frameborder="0" allowfullscreen></iframe></div></div></div>       
+    <meta property="og:title" content="Не найдено">
+    <title>KR.Corp | Не найдено</title>
+    <meta property="og:image" content="">
+    <meta property="og:description" content="0+ Нет в каталоге">
 </section>
 
-<style>
-    body{
-        background: url(./image.png);
-        background-size: cover;
-        background-position: 50%;
-        height: 100vh !important;
-        backdrop-filter: blur(2vw) brightness(0.2);
-    }
-    .im{
-        background: #00000030 !important;
-    }
-    .hero-copy {
-        padding: 15px;
-        height: 233px;
-        background: #ffffff30;
-        border: 1px solid #ffffff30;
-        border-radius: 3px;
-    }
-    .image{
-        & {
-            background: #ffffff30 !important;
-            border: 1px solid #ffffff30 !important;
-        }
-        &:hover {
-            box-shadow: none !important;
-        }
-    }
-    .buttonns:before{
-        background: #ffffff30 !important;
-        border: 1px solid #ffffff30;
-        border-bottom: 0 !important;
-    }
-    .fonv{
-        /* display: none; */
-        top: 1px;
-        background: #00000030 !important;
-        border: 1px solid #ffffff30;
-        /* border-top: 0px solid #ffffff30; */
-    }
-</style>
+</html>
 
+<script src="../films.js"></script>
 <script>// Список фильмов
 // Список фильмов
-const FilmsList = [
-    {
-        'Title': 'Головоломка 3',
-        'AgeLimit': '16+',
-        'VideoUrl': 'https://polynoy-as.newplayjj.com/3'
-    },
-    {
-        'Title': 'Головоломка 2',
-        'AgeLimit': '6+',
-        'VideoUrl': 'https://polynoy-as.newplayjj.com/2'
-    },
-    {
-        'Title': 'Головоломка 1',
-        'AgeLimit': '0+',
-        'VideoUrl': 'https://polynoy-as.newplayjj.com:9443?kp=5102255&token=e9a962df5e96874972bd776d247fa6'
-    }
-];
 
 // Получаем параметр id из URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -124,11 +78,13 @@ if (filmId && filmId > 0 && filmId <= FilmsList.length) {
 
     // Заменяем значения в HTML
     document.querySelector('.name').innerHTML = `${film.Title}<p class="number">${film.AgeLimit}</p>`;
-    document.querySelector('.image').setAttribute('src', 'image.png');
+    document.querySelector('.image').setAttribute('src', `./${filmId}/image.png`);
     document.querySelector('.image').setAttribute('alt', film.Title);
     document.querySelector('iframe').setAttribute('src', film.VideoUrl);
     document.title = `KetaRu | ${film.Title}`;
     document.querySelector('meta[property="og:title"]').setAttribute('content', film.Title);
+    document.querySelector('meta[property="og:image"]').setAttribute('content', `https://kino.ketame.ru/pages/${filmId}/image.png`);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', `${film.AgeLimit}`);
 }
 
     </script>
