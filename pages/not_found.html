@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+        body, html {
+            margin: 0;
+            padding: 0;
+            background: #000;
+        }
+        #bg-title {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: "Unbounded", sans-serif;
+            padding: 14px 16px;
+            border-radius: 5px;
+            display: inline-block;
+            position: absolute;
+            margin: auto auto;
+            height: max-content;
+            width: max-content;
+            transform: rotate(-2deg);
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        #bg-title::after {
+            content: 'KR.Corp';
+            top: -8px;
+            right: -25px;
+            padding: 2px 5px;
+            border-radius: 2px;
+            font-size: 12px;
+            transform: rotate(3deg);
+            background: rgb(185, 44, 79);
+            position: absolute;
+        }
+    </style>
+    <div id="bg-title">Видео не найдено</div>
+</body>
+</html>
