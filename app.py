@@ -319,19 +319,39 @@ if not os.path.exists(f'./{DIR}'):
     os.makedirs(f'./{DIR}')
 
 # Изменение каталога
-Строка = 89
-with open('./index.html', 'r', encoding='utf8') as Файл:
-    lines = Файл.readlines()
-lines.insert(Строка-2, f'''
-<section class="hero1"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="film"><h1 class="items">
-    <span class="item1">{Имя}</span><p>
-    <span class="item2">{Возраст}</span></p></h1></div>
-    <div class="im"><img src="./pages/{num}/image.png" class="image" loading="lazy" onerror="this.style.visibility = 'hidden'" width="170px" height = "250px"><div class="hero-cta">
-    <a class="buttonn" href="./pages/{num}">Смотреть</a>
-</section>
-''')
-Файл = open('./index.html', 'w+', encoding='utf8')
-Файл.writelines(lines)
+# Строка = 89
+# with open('./index.html', 'r', encoding='utf8') as Файл:
+#     lines = Файл.readlines()
+# lines.insert(Строка-2, f'''
+# <section class="hero1"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="film"><h1 class="items">
+#     <span class="item1">{Имя}</span><p>
+#     <span class="item2">{Возраст}</span></p></h1></div>
+#     <div class="im"><img src="./pages/{num}/image.png" class="image" loading="lazy" onerror="this.style.visibility = 'hidden'" width="170px" height = "250px"><div class="hero-cta">
+#     <a class="buttonn" href="./pages/{num}">Смотреть</a>
+# </section>
+# ''')
+# Файл = open('./index.html', 'w+', encoding='utf8')
+# Файл.writelines(lines)
+
+# Добавление фильма в начало films.js
+
+js_film_entry = (
+    f"    {{"
+    f"        'Title': '{Имя}',"
+    f"        'AgeLimit': '{Возраст}',"
+    f"        'VideoUrl': '{Видео}'"
+    f"    }},"
+)
+# Читаем текущий films.js
+with open('./films.js', 'r', encoding='utf8') as f:
+    js_content = f.read()
+# Находим место вставки (после открывающей скобки массива)
+insert_pos = js_content.find('[\n') + 2
+# Вставляем новую запись
+new_js_content = js_content[:insert_pos] + js_film_entry + js_content[insert_pos:]
+# Записываем обратно
+with open('./films.js', 'w', encoding='utf8') as f:
+    f.write(new_js_content)
 
 # Создание изображения
 if imgLOG in '1':
