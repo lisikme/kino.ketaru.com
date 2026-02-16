@@ -83,6 +83,16 @@
                     <iframe class="fonv" src="./not_found.html" frameborder="0" allowfullscreen></iframe>
                 </div>
             </section>
+
+            <!-- Блок похожих фильмов -->
+            <section class="hero1 similar-films-section">
+                <div class="container">
+                    <h2 class="section-title">Похожие фильмы</h2>
+                    <div class="similar-films-grid" id="similar-films-grid">
+                        <!-- Сюда будут добавляться карточки фильмов -->
+                    </div>
+                </div>
+            </section>
         </div>
 
         <script src="../films.js"></script>
@@ -132,7 +142,217 @@
                     document.write(`<meta name="twitter:image" content="https://kino.ketame.ru/pages/${filmId}/image.png">`);
                     document.write(`<meta name="twitter:description" content="${film.AgeLimit} | ${film.Title}">`);
                 }
+
+                // Функция для очистки строки от спецсимволов и разбиения на 3-буквенные фрагменты
+                function getTrigrams(str) {
+                    // Удаляем спецсимволы +-.,\/|[]{}()1234567890:;
+                    const cleaned = str.toLowerCase().replace(/[+\-.,\\/|\[\]{}()1234567890:;]/g, ' ').replace(/\s+/g, ' ').trim();
+                    const words = cleaned.split(' ');
+                    const trigrams = new Set();
+                    
+                    words.forEach(word => {
+                        if (word.length < 2) return;
+                        // Разбиваем слово на 3-буквенные фрагменты
+                        for (let i = 0; i <= word.length - 3; i++) {
+                            trigrams.add(word.substr(i, 3));
+                        }
+                    });
+                    return trigrams;
+                }
+
+                // Функция для простого поиска (по вхождению очищенного слова)
+                function simpleMatch(title1, title2) {
+                    const clean1 = title1.toLowerCase().replace(/[+\-.,\\/|\[\]{}()1234567890:;]/g, ' ').replace(/\s+/g, ' ').trim();
+                    const clean2 = title2.toLowerCase().replace(/[+\-.,\\/|\[\]{}()1234567890:;]/g, ' ').replace(/\s+/g, ' ').trim();
+                    
+                    const words1 = clean1.split(' ');
+                    const words2 = clean2.split(' ');
+                    
+                    for (let w1 of words1) {
+                        if (w1.length < 2) continue;
+                        for (let w2 of words2) {
+                            if (w2.length < 2) continue;
+                            if (w1.includes(w2) || w2.includes(w1)) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }
+
+                // Поиск похожих фильмов
+                const currentFilmId = parseInt(filmId);
+                const currentFilmIndex = FilmsList.length - currentFilmId;
+                const currentFilm = FilmsList[currentFilmIndex];
+                
+                // Получаем триграммы текущего фильма
+                const currentTrigrams = getTrigrams(currentFilm.Title);
+                
+                // Массив для результатов с оценкой схожести
+                const similarFilms = [];
+                
+                // Первый проход: ищем по триграммам (строгий поиск)
+                FilmsList.forEach((f, index) => {
+                    const fId = FilmsList.length - index;
+                    if (fId === currentFilmId) return; // пропускаем текущий фильм
+                    
+                    const fTrigrams = getTrigrams(f.Title);
+                    let matchCount = 0;
+                    
+                    // Считаем пересечение триграмм
+                    fTrigrams.forEach(trigram => {
+                        if (currentTrigrams.has(trigram)) {
+                            matchCount++;
+                        }
+                    });
+                    
+                    // Если есть хотя бы одно совпадение триграммы
+                    if (matchCount > 0) {
+                        similarFilms.push({
+                            id: fId,
+                            title: f.Title,
+                            ageLimit: f.AgeLimit,
+                            videoUrl: f.VideoUrl,
+                            score: matchCount,
+                            matchType: 'strict'
+                        });
+                    }
+                });
+                
+                // Сортируем строгие совпадения по убыванию количества совпадений
+                similarFilms.sort((a, b) => b.score - a.score);
+                
+                // Если меньше 12 фильмов, добавляем простые совпадения
+                if (similarFilms.length < 15) {
+                    const existingIds = new Set(similarFilms.map(f => f.id));
+                    
+                    FilmsList.forEach((f, index) => {
+                        const fId = FilmsList.length - index;
+                        if (fId === currentFilmId) return;
+                        if (existingIds.has(fId)) return;
+                        
+                        if (simpleMatch(currentFilm.Title, f.Title)) {
+                            similarFilms.push({
+                                id: fId,
+                                title: f.Title,
+                                ageLimit: f.AgeLimit,
+                                videoUrl: f.VideoUrl,
+                                matchType: 'simple'
+                            });
+                        }
+                    });
+                }
+                
+                // Ограничиваем до 12 фильмов
+                const displayFilms = similarFilms.slice(0, 15);
+                
+                // Отрисовываем сетку похожих фильмов
+                const grid = document.getElementById('similar-films-grid');
+                
+                if (displayFilms.length === 0) {
+                    grid.innerHTML = '<p class="no-similar">Нет похожих фильмов</p>';
+                } else {
+                    grid.innerHTML = displayFilms.map(f => `
+                        <a href="./?id=${f.id}" class="similar-film-card">
+                            <div class="similar-film-poster">
+                                <img src="./${f.id}/image.png" 
+                                     alt="${f.title}" 
+                                     loading="lazy"
+                                     onerror="this.src='not_found.png'">
+                                <span class="similar-film-age">${f.ageLimit}</span>
+                            </div>
+                            <div class="similar-film-title">${f.title}</div>
+                        </a>
+                    `).join('');
+                }
             }
         </script>
+<style>
+                        .similar-films-section {
+                        margin-top: 40px;
+                        padding: 20px 0;
+                    }
+                    
+                    .section-title {
+                        font-size: 24px;
+                        color: #fff;
+                        margin-bottom: 20px;
+                        font-weight: 500;
+                    }
+                    
+                    .similar-films-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+                        gap: 20px;
+                        justify-content: center;
+                    }
+                    
+                    .similar-film-card {
+                        border: 1px solid #1e293b;
+                        background: #020817;
+                        border-radius: 3px;
+                        text-decoration: none;
+                        transition: transform 0.2s;
+                        display: block;
+                    }
+                    
+                    .similar-film-card:hover {
+                        transform: scale(1.05);
+                    }
+                    
+                    .similar-film-poster {
+                        position: relative;
+                        width: 100%;
+                        height: 250px;
+                        /* border-radius: 5px; */
+                        overflow: hidden;
+                        background: #1a1a1a;
+                    }
+                    
+                    .similar-film-poster img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    
+                    .similar-film-age {
+                        position: absolute;
+                        bottom: 8px;
+                        right: 8px;
+                        background: rgba(0, 0, 0, 0.8);
+                        backdrop-filter: blur(5px);
+                        color: #fff;
+                        padding: 4px 10px;
+                        border-radius: 3px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        line-height: normal;
+                    }
+                    
+                    .similar-film-title {
+                        margin: 2px;
+                        min-height: 50px;
+
+                        color: #fff;
+                        font-size: 12px;
+                        line-height: normal;
+                        text-align: center;
+                        word-break: break-word;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    
+                    .no-similar {
+                        color: #666;
+                        text-align: center;
+                        padding: 40px;
+                        font-size: 16px;
+                        grid-column: 1 / -1;
+                    }
+</style>
     </body>
 </html>
