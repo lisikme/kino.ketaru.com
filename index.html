@@ -57,6 +57,7 @@
 </div> -->
 
 <section class="hero2"></section>
+<section class="hero4">
 <div class="container">
     <div class="search-wrapper">
         <input type="text" id="searchBar" placeholder="Поиск..." class="search-bar" autocomplete="off">
@@ -75,6 +76,7 @@
         <div id="count-film">0</div>
     </div>
 </div>
+</section>
 <div id="autocomplete-box" style="display: none;" class="autocomplete-box"></div>
 <section class="hero3" style="position: relative; display: none;" id="outdatedMessage">
     <div class="container">
@@ -281,8 +283,8 @@ function updateFilmCount(searchTerm = "") {
                 found++;
 
                 // Подсвечиваем текст для правильной раскладки
-                const highlightedTitle = highlightText(title, searchTerm);
-                movie.querySelector(".item1").innerHTML = highlightedTitle;
+                // const highlightedTitle = highlightText(title, searchTerm);
+                // movie.querySelector(".item1").innerHTML = highlightedTitle;
 
                 if (suggestions.length < 500 && !suggestions.includes(title)) {
                     suggestions.push(title);  // Оставляем оригинальный регистр

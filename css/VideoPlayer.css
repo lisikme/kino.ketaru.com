@@ -3,17 +3,17 @@
     position: relative;
     border-radius: 0px 0px 0px 0px;
     padding: 5px 0 3px 0;
-    border: 1px solid #1e293b;
-    background: linear-gradient(0deg, #1e293b 0%, #171c2a 100%);
+    border: #272727 solid 1px;
+    background: linear-gradient(0deg, #132500 0%, #001100 100%);
     display: inline-flex;
     text-decoration: none !important;
-    color: #84d6ff;
+    color: #D7FE7B;
     font-weight: 400;
     font-size: 16px;
     margin-bottom: -26px;
     display: block;
     text-align: center;
-    line-height: 20px;
+    line-height: normal;
     margin-left: auto;
     margin-right: auto;
     cursor: default;
@@ -25,8 +25,10 @@
     height: 40vw;
     max-height: 480px;
     min-height: 220px;
-    background: #000000;
-    border: 1px solid #1e293b;
+    /* background: #000000; */
+    /* border: 1px solid #1e293b; */
+    background-color: #000000;
+    border: #272727 solid 1px;
     border-radius: 0px 0px 3px 3px;
     animation: image 1s infinite;
 }
@@ -40,4 +42,53 @@
     0%   {background-color: #090c12}
     50%  {background-color: #0c1117}
     100% {background-color: #090c12}
+}
+.similar-films-grid {
+    background-color: #000000;
+    border: #272727 solid 1px;
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)) !important;
+    border-radius: 3px;
+    padding: 10px;
+    border-radius: 0 0 3px 3px !important;
+    gap: 5px !important;
+}
+.similar-film-card{
+    background: #ffffff15 !important;
+}
+.similar-film-title{
+    border-top: #272727 solid 1px;
+    margin: 0px !important;
+    padding: 2px !important;
+}
+.similar-film-poster{
+    /* height: 200px !important; */
+    /* width: 145px !important; */
+    width: unset !important;
+    height: unset !important;
+    aspect-ratio: 5/7 !important;
+}
+.section-title{
+    border-radius: 3px 3px 0 0 !important;
+    position: relative;
+    border-radius: 0px 0px 0px 0px;
+    padding: 5px 0 3px 0;
+    border: #272727 solid 1px;
+    background: linear-gradient(0deg, #132500 0%, #001100 100%);
+    display: inline-flex;
+    text-decoration: none !important;
+    color: #D7FE7B !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    margin-bottom: 0px !important;
+    display: block;
+    text-align: center;
+    line-height: normal;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: default;
+    border-bottom: 0;
+}
+.similar-films-section{
+    
+    padding: 0 0 40px 0 !important;
 }

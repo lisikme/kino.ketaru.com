@@ -34,6 +34,12 @@
 
         <link rel="stylesheet" href="../css/Root.css">        <!-- Конфигурация -->
 
+        <style>
+            .hero2 {
+                padding: 78px 0px 20px 0px;
+            }
+        </style>
+        
         <!-- JavasCript -->
         <script src="../../index.js"></script>
     </head>
@@ -223,7 +229,7 @@
                 similarFilms.sort((a, b) => b.score - a.score);
                 
                 // Если меньше 12 фильмов, добавляем простые совпадения
-                if (similarFilms.length < 15) {
+                if (similarFilms.length < 14) {
                     const existingIds = new Set(similarFilms.map(f => f.id));
                     
                     FilmsList.forEach((f, index) => {
@@ -244,7 +250,7 @@
                 }
                 
                 // Ограничиваем до 12 фильмов
-                const displayFilms = similarFilms.slice(0, 15);
+                const displayFilms = similarFilms.slice(0, 14);
                 
                 // Отрисовываем сетку похожих фильмов
                 const grid = document.getElementById('similar-films-grid');
@@ -267,92 +273,94 @@
                 }
             }
         </script>
-<style>
-                        .similar-films-section {
-                        margin-top: 40px;
-                        padding: 20px 0;
-                    }
-                    
-                    .section-title {
-                        font-size: 24px;
-                        color: #fff;
-                        margin-bottom: 20px;
-                        font-weight: 500;
-                    }
-                    
-                    .similar-films-grid {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-                        gap: 20px;
-                        justify-content: center;
-                    }
-                    
-                    .similar-film-card {
-                        border: 1px solid #1e293b;
-                        background: #020817;
-                        border-radius: 3px;
-                        text-decoration: none;
-                        transition: transform 0.2s;
-                        display: block;
-                    }
-                    
-                    .similar-film-card:hover {
-                        transform: scale(1.05);
-                    }
-                    
-                    .similar-film-poster {
-                        position: relative;
-                        width: 100%;
-                        height: 250px;
-                        /* border-radius: 5px; */
-                        overflow: hidden;
-                        background: #1a1a1a;
-                    }
-                    
-                    .similar-film-poster img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                    
-                    .similar-film-age {
-                        position: absolute;
-                        bottom: 8px;
-                        right: 8px;
-                        background: rgba(0, 0, 0, 0.8);
-                        backdrop-filter: blur(5px);
-                        color: #fff;
-                        padding: 4px 10px;
-                        border-radius: 3px;
-                        font-size: 14px;
-                        font-weight: 600;
-                        border: 1px solid rgba(255, 255, 255, 0.2);
-                        line-height: normal;
-                    }
-                    
-                    .similar-film-title {
-                        margin: 2px;
-                        min-height: 50px;
+        <style>
+            .similar-films-section {
+                margin-top: 20px;
+                padding: 20px 0;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                color: #fff;
+                margin-bottom: 20px;
+                font-weight: 500;
+            }
+            
+            .similar-films-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+                gap: 20px;
+                justify-content: center;
+            }
+            
+            .similar-film-card {
+                /* border: 1px solid #1e293b; */
+                /* background: #020817; */
+                background-color: #000000;
+                border: #272727 solid 1px;
+                border-radius: 3px;
+                text-decoration: none;
+                transition: transform 0.2s;
+                display: block;
+            }
+            
+            .similar-film-card:hover {
+                transform: scale(1.05);
+            }
+            
+            .similar-film-poster {
+                position: relative;
+                width: 100%;
+                height: 250px;
+                /* border-radius: 5px; */
+                overflow: hidden;
+                background: #1a1a1a;
+            }
+            
+            .similar-film-poster img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .similar-film-age {
+                position: absolute;
+                bottom: 8px;
+                right: 8px;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(5px);
+                color: #fff;
+                padding: 2px 10px;
+                border-radius: 3px;
+                font-size: 14px;
+                font-weight: 600;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                line-height: normal;
+            }
+            
+            .similar-film-title {
+                margin: 2px;
+                min-height: 50px;
 
-                        color: #fff;
-                        font-size: 12px;
-                        line-height: normal;
-                        text-align: center;
-                        word-break: break-word;
-                        display: flex;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                    
-                    .no-similar {
-                        color: #666;
-                        text-align: center;
-                        padding: 40px;
-                        font-size: 16px;
-                        grid-column: 1 / -1;
-                    }
-</style>
+                color: #fff;
+                font-size: 12px;
+                line-height: normal;
+                text-align: center;
+                word-break: break-word;
+                display: flex;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .no-similar {
+                color: #666;
+                text-align: center;
+                padding: 40px;
+                font-size: 16px;
+                grid-column: 1 / -1;
+            }
+        </style>
     </body>
 </html>

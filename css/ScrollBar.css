@@ -1,12 +1,12 @@
 /* KetaRu ScrollBars */
 :root{
-    --Background: #0f0f0f;
+    --Background: #000000;
     --Fon: #0d1218;
-    --ColorNone: #4cc2ff;
-    --ColorCursor: #4cc3ff80;
-    --Width: 16px;
-    --Border: 4px;
-    --Radius: 6px;
+    --ColorNone: #D7FE7B;
+    --ColorCursor: #95B940;
+    --Width: 7px;
+    --Border: 2px;
+    --Radius: 0px;
 } 
 
 /* YouTube ScrollBars */
@@ -31,7 +31,7 @@
 ::-webkit-scrollbar-thumb{
     background-color: var(--ColorNone);
     border-radius: var(--Radius);
-    min-height: 30px;
+    min-height: 40px;
     width: var(--Width);
     border: var(--Border) solid var(--Background);
 
