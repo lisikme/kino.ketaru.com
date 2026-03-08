@@ -222,66 +222,10 @@ while Видео in '':
         Видео1 = f'{Y}[link={Видео}]Ссылка[/link] {B}'
 
 Страница = (f"""
-<!-- Форматирование -->
-<!DOCTYPE html>
-<html lang="ru" class="no-js">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <head>
-        <meta charset="utf-8">
-        <meta name="yandex-verification" content="2d8c1dcb18ad48b7"/>
-        
-<!-- Интеграция Embed -->
-<meta property="og:site_name" content="KR.Corp">
-<link rel="shortcut icon" href="https://i.imgur.com/tPQs4ZD.png">
-<meta property="og:image:width" content="170">
-<meta property="og:image:height" content="250">
-<meta name="theme-color" content="#26ade9">
+<meta property="og:title" content="{Имя}">
+<title>KR.Corp | {Имя}</title>
+<meta property="og:image" content="https://kino.ketame.ru/pages/{Файлов}/image.png">
 
-<!-- CSS -->
-<link rel="stylesheet" href="../../css/Page.css">        <!-- Дизайн фона сайта --> 
-<link rel="stylesheet" href="../../css/Header.css">      <!-- Дизайн шапки сайта --> 
-<link rel="stylesheet" href="../../css/ScrollBar.css">   <!-- Полоса прокрутки -->
-<link rel="stylesheet" href="../../css/SectionBox.css">  <!-- Секции блоков -->
-<link rel="stylesheet" href="../../css/VideoPlayer.css"> <!-- Видео блок -->
-<link rel="stylesheet" href="../../css/Animation.css">   <!-- Анимации -->
-<link rel="stylesheet" href="../../css/Head.css">        <!-- Дизайн шапки сайта 2.0 --> 
-
-<link rel="stylesheet" href="../../css/Root.css">        <!-- Конфигурация -->
-
-<!-- JavasCript -->
-<script src="../../index.js"></script>
-
-<!-- Шапка страницы -->
-<div class="body-wrap">
-    <header id="site-header">
-        <type id="page-name">
-            <span id="namm">КиноОнлайн<span id="rel">БЕТА</span></span>
-            <span id="nam">Каталог фильмов</span></type>
-        <div id="site-header-box">
-            <a href="../../">
-                <div id="site-logo-box">
-                    <img id="site-logo-img" src="https://ketame.ru/corp.png">
-                    <name id="site-logo-name">
-                        <span id="ketaru">Ketaru</span>
-                        <span id="corp">Corp</span>
-                    </name>
-                </div>
-            </a>
-        </div>
-    </header>
-
-<!-- каталог фильмов -->
-<section class="hero2"></section>
-
-<section class="hero1"><div class="container"><div class="hero-inner"><div class="hero-copy"><div class="film">
-    <div class="name">{Имя}<p class="number">{Возраст}</p></div></div><div class="im">
-    <img src="image.png" class="image" loading="lazy" onerror="this.style.visibility = 'hidden'" width="170px" height = "250px"><div class="hero-cta">
-    {Button}</section><section class="hero1"><div class="container"><p class="buttonns"><p>
-    <iframe class="fonv" src="{Видео}" frameborder="0" allowfullscreen></iframe></div></div></div>       
-    <meta property="og:title" content="{Имя}">
-    <title>KR.Corp | {Имя}</title>
-        <meta property="og:image" content="https://kino.ketame.ru/pages/{Файлов}
 <!-- Форматирование -->
 <!DOCTYPE html>
 <html lang="ru" class="no-js">
@@ -305,75 +249,74 @@ while Видео in '':
         <link rel="stylesheet" href="../../css/Head.css">       <!-- Дизайн шапки сайта 2.0 --> 
         <link rel="stylesheet" href="../../css/Root.css">        <!-- Конфигурация -->
     </head>
-<!-- JavasCript -->
-<script src="../../index.js"></script>
-<style>
-    iframe{
-        width: 100%;
-    }
-    #new_pages_format{
-        background: #270000;
-        border: #ff1d1d solid 1px;
-        width: max-content;
-        margin: 0 auto;
-        border-top: 0;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        padding: 0px 10px;
-        font-size: 12px;
-        font-weight: 500;
-    }
-</style>
-<!-- Шапка страницы -->
-<div class="body-wrap">
-    <header id="site-header">
-        <type id="page-name">
-            <span id="namm">КиноОнлайн<span id="rel">БЕТА</span></span>
-            <span id="nam">Каталог фильмов</span></type>
-        <div id="site-header-box">
-            <a href="../../">
-                <div id="site-logo-box">
-                    <img id="site-logo-img" src="https://ketame.ru/corp.png">
-                    <name id="site-logo-name">
-                        <span id="ketaru">Ketaru</span>
-                        <span id="corp">Corp</span>
-                    </name>
-                </div>
-            </a>
-        </div><div id="new_pages_format">Открыть новый формат сраницы</div>
-    </header>
-    <iframe id="iframe" src="../not_found.html" frameborder="0" scrolling="no"></iframe>
-</div>
+    <!-- JavasCript -->
+    <script src="../../index.js"></script>
+    <style>
+        iframe {{
+            width: 100%;
+        }}
+        #new_pages_format {{
+            background: #270000;
+            border: #ff1d1d solid 1px;
+            width: max-content;
+            margin: 0 auto;
+            border-top: 0;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            padding: 0px 10px;
+            font-size: 12px;
+            font-weight: 500;
+        }}
+    </style>
+    <!-- Шапка страницы -->
+    <div class="body-wrap">
+        <header id="site-header">
+            <type id="page-name">
+                <span id="namm">КиноОнлайн<span id="rel">БЕТА</span></span>
+                <span id="nam">Каталог фильмов</span></type>
+            <div id="site-header-box">
+                <a href="../../">
+                    <div id="site-logo-box">
+                        <img id="site-logo-img" src="https://ketame.ru/corp.png">
+                        <name id="site-logo-name">
+                            <span id="ketaru">Ketaru</span>
+                            <span id="corp">Corp</span>
+                        </name>
+                    </div>
+                </a>
+            </div><div id="new_pages_format">Открыть новый формат сраницы</div>
+        </header>
+        <iframe id="iframe" src="../not_found.html" frameborder="0" scrolling="no"></iframe>
+    </div>
 
-<script>
-    let iframe = document.getElementById('iframe');
-    let button = document.getElementById('new_pages_format');
-    let text = 0;
-    window.onload = function() {
-        let path = window.location.pathname;
-        let pathParts = path.split('/').filter(part => part.length > 0);
-        let lastFolder = pathParts[pathParts.length - 1];
-        iframe.src = `../iframe.html?id=${lastFolder}`
-        if (button) {
-            button.addEventListener('click', function() {
-                window.open(`..?id=${lastFolder}`, '_blank');
-            });
-        }
-    }
-    iframe.onload = function() {
-        if (iframe && iframe.contentWindow && iframe.contentWindow.document && iframe.contentWindow.document.body) {
-            let newHeight = iframe.contentWindow.document.body.scrollHeight;
-            if (newHeight < 10) {
-                iframe.style.height = '100%';
-            } else {
-                iframe.style.height = newHeight + 'px';
-            }
-        } else {
-            console.log("Содержимое iframe еще не загружено или недоступно.");
-        }
-    };
-</script>
-
+    <script>
+        let iframe = document.getElementById('iframe');
+        let button = document.getElementById('new_pages_format');
+        let text = 0;
+        window.onload = function() {{
+            let path = window.location.pathname;
+            let pathParts = path.split('/').filter(part => part.length > 0);
+            let lastFolder = pathParts[pathParts.length - 1];
+            iframe.src = `../iframe.html?id=${{lastFolder}}`
+            if (button) {{
+                button.addEventListener('click', function() {{
+                    window.open(`..?id=${{lastFolder}}`, '_blank');
+                }});
+            }}
+        }}
+        iframe.onload = function() {{
+            if (iframe && iframe.contentWindow && iframe.contentWindow.document && iframe.contentWindow.document.body) {{
+                let newHeight = iframe.contentWindow.document.body.scrollHeight;
+                if (newHeight < 10) {{
+                    iframe.style.height = '100%';
+                }} else {{
+                    iframe.style.height = newHeight + 'px';
+                }}
+            }} else {{
+                console.log("Содержимое iframe еще не загружено или недоступно.");
+            }}
+        }};
+    </script>
 </html>
 """)
 
@@ -426,11 +369,11 @@ if not os.path.exists(f'./{DIR}'):
 # Добавление фильма в начало films.js
 
 js_film_entry = (
-    f"    {{"
-    f"        'Title': '{Имя}',"
-    f"        'AgeLimit': '{Возраст}',"
-    f"        'VideoUrl': '{Видео}'"
-    f"    }},"
+    f"    {{\n"
+    f"        'Title': '{Имя}',\n"
+    f"        'AgeLimit': '{Возраст}',\n"
+    f"        'VideoUrl': '{Видео}'\n"
+    f"    }},\n"
 )
 # Читаем текущий films.js
 with open('./films.js', 'r', encoding='utf8') as f:
