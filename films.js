@@ -72,7 +72,7 @@ const FilmsList = [
     {
         'Title': 'Леди Баг и Супер-Кот: Нью-Йорк. Союз героев (2020)',
         'AgeLimit': '6+',
-        'VideoUrl': 'https://5221407734375553.svetacdn.in/Sjjgc9ELBH71?kp_id=5457595&theme=2'
+        'VideoUrl': 'https://api.initem.ws/embed/movie/78815?sharing=false&host=kinotik.top'
     },
     {
         'Title': 'Леди Баг и Супер-Кот (сериал 2015 - 2022) [1-6 сезоны]',
@@ -1287,7 +1287,7 @@ const FilmsList = [
     {
         'Title': 'Покемон. Детектив Пикачу (2019)',
         'AgeLimit': '12+',
-        'VideoUrl': 'https://5221407734375553.svetacdn.in/Sjjgc9ELBH71?kp_id=994864&theme=2'
+        'VideoUrl': 'https://attorney-as.allarknow.online/?token_movie=9dd3849c74792e8948fe60c25363ac&token=7dc3afc17234b117e1ad6f50bd0030'
     },
     {
         'Title': 'Дорога домой (2021)',
