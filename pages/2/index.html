@@ -72,7 +72,7 @@
     window.onload = function() {
         let path = window.location.pathname;
         let pathParts = path.split('/').filter(part => part.length > 0);
-        let lastFolder = pathParts[pathParts.length - 2];
+        let lastFolder = pathParts[pathParts.length - 1];
         iframe.src = `../iframe.html?id=${lastFolder}`
         if (button) {
             button.addEventListener('click', function() {
