@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фильмы · тёмная таблица (инверсия id)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+        * {
+            font-family: "Unbounded", sans-serif;
+            font-weight: 300 !important;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; */
+        }
+        body {
+            background: #0a0c12;
+            background: radial-gradient(circle at 30% 20%, #1a1e28, #07090e);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        .table-container {
+            width: 100%;
+            max-width: 1500px;
+            background: #0f1219;
+            /* border-radius: 28px; */
+            border: 1px solid #2a2f3b;
+            box-shadow: 0 20px 40px -10px #00000080, 0 0 0 1px #2f3543 inset;
+            overflow: hidden;
+            backdrop-filter: blur(2px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0f1219;
+            color: #e0e6f0;
+            font-size: 0.95rem;
+        }
+        th {
+            text-align: left;
+            padding: 5px 5px;
+            background: #1a1e2a;
+            color: #b7c7e0;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border-bottom: 1px solid #2d3443;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        td {
+            padding: 5px;
+            border-bottom: 1px solid #212634;
+            color: #cdd9f0;
+            vertical-align: middle;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background: #1b202d;
+        }
+        tr:nth-child(even) {
+            background: #0c0f16;
+        }
+        tr:nth-child(even):hover td {
+            background: #171d2b;
+        }
+
+        .number-col {
+            font-size: 12px;
+            text-align: center;
+            background: #07090e;
+            color: #68faff;
+            font-weight: 500;
+            width: 55px;
+        }
+        .title-col {
+            font-weight: 500;
+            color: #f0f4ff;
+        }
+        .age-col {
+            width: 80px;
+        }
+        .age-badge {
+            background: #212837;
+            color: #aebddb;
+            padding: 0.2rem 1rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            border: 1px solid #394153;
+            white-space: nowrap;
+        }
+        .status-col {
+            width: 150px;
+        }
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.25rem 1.2rem 0.25rem 1rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: #1b212e;
+            color: #cedbeb;
+            border: 1px solid #353f53;
+            white-space: nowrap;
+        }
+        .status-working {
+            background: #0e2a1d;
+            color: #a0e0b0;
+            border-color: #2a6f44;
+        }
+        .status-broken {
+            background: #2b1717;
+            color: #f9b5b5;
+            border-color: #994141;
+        }
+        .status-ssl {
+            background: #2d2410;
+            color: #f3da9b;
+            border-color: #9e751f;
+        }
+        .status-wait {
+            background: #1c2332;
+            color: #b3c6ea;
+            border-color: #3d4a68;
+        }
+        .url-col {
+            max-width: 270px;
+        }
+        .url-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .external-link {
+            background: #1f2638;
+            color: #9eb4e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.2rem 1rem 0.2rem 0.9rem;
+            border-radius: 5px;
+            border: 1px solid #364153;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.1s;
+            white-space: nowrap;
+        }
+        .external-link:hover {
+            background: #2a3450;
+            border-color: #5a74a6;
+            color: #d4e3ff;
+        }
+        .external-link i {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .no-url {
+            color: #5e6f8a;
+            font-style: italic;
+        }
+        .top-section {
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+            background: #0b0e14;
+            border-bottom: 1px solid #252c3a;
+        }
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .header-row h2 {
+            font-weight: 450;
+            font-size: 1.8rem;
+            color: #d2e1ff;
+            letter-spacing: -0.02em;
+        }
+        .stats {
+            display: flex;
+            gap: 5px;
+            /* background: #131824; */
+            /* padding: 10px 10px; */
+            /* border-radius: 5px; */
+            /* border: 1px solid #2a3142; */
+        }
+        .stat-item {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            color: #b7c6e0;
+        }
+        .stat-value {
+            font-weight: 600;
+            background: #1f2638;
+            padding: 0.2rem 1rem;
+            border-radius: 5px;
+            color: #dde9ff;
+        }
+        .search-section {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .search-input {
+            background: #11161f;
+            border: 1px solid #2a3145;
+            padding: 0.8rem 1.3rem;
+            border-radius: 5px;
+            min-width: 260px;
+            color: #eef4ff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.15s;
+        }
+        .search-input::placeholder {
+            color: #4f6080;
+        }
+        .search-input:focus {
+            border-color: #4f6e9e;
+            background: #151d2b;
+        }
+        .filter-group {
+            display: flex;
+            gap: 0.2rem;
+            background: #191f2c;
+            padding: 0.25rem;
+            border-radius: 5px;
+            border: 1px solid #2b3243;
+        }
+        .filter-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1.3rem;
+            border-radius: 5px;
+            font-weight: 500;
+            color: #aeb9d0;
+            cursor: pointer;
+            transition: 0.1s;
+            font-size: 0.9rem;
+        }
+
+
+        #workingCount{
+            background: #0e2a1d;
+            color: #a0e0b0;
+            border: 1px solid #2a6f44;
+        }
+        #brokenCount {
+            background: #2b1717;
+            color: #f9b5b5;
+            border: 1px solid #994141;
+        }
+        #sslCount {
+            background: #2d2410;
+            color: #f3da9b;
+            border: 1px solid #9e751f;
+        }
+        #totalCount {
+            background: #1c2332;
+            color: #b3c6ea;
+            border: 1px solid #3d4a68;
+        }
+
+
+        .filter-btn.active {
+            background: #232b3f;
+            color: #ffffff;
+            box-shadow: 0 2px 5px #00000040;
+        }
+        .filter-btn:hover {
+            background: #2b344b;
+            color: #fff;
+        }
+        .loader-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 5px;
+            background: #7e94bc;
+            margin: 0 2px;
+            animation: pulse 1.4s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 0.2; } 50% { opacity: 1; } }
+        .footer-note {
+            padding: 0.8rem 1.5rem 1.2rem 1.5rem;
+            font-size: 0.8rem;
+            color: #3d4b64;
+            border-top: 1px solid #212837;
+            background: #0a0d13;
+            display: flex;
+            justify-content: space-between;
+        }
+        .inv-info {
+            color: #566f99;
+        }
+        #title-box{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        #title-box0{
+            justify-content: center;
+            display: flex;
+            /* flex-direction: column; */
+            flex-direction: row;
+            gap: 5px;
+            align-items: flex-start;
+        }
+        #tesp{
+            background: #1F2638;
+            border: 1px solid #364153;
+            /* margin-top: 5px; */
+            max-width: 300px;
+            padding: 2px 5px;
+            /* font-size: 10px; */
+            overflow: hidden;
+        }
+    </style>
+    <script src="films.js"></script>
+</head>
+<body>
+<div class="table-container">
+    <div class="top-section">
+        <div class="header-row">
+            <div class="stats">
+                <div class="stat-item"><span class="stat-value" id="totalCount">0</span></div>
+                <div class="stat-item"><span class="stat-value" id="workingCount">0</span></div>
+                <div class="stat-item"><span class="stat-value" id="brokenCount">0</span></div>
+                <div class="stat-item"><span class="stat-value" id="sslCount">0</span></div>
+            </div>
+        </div>
+        <div class="search-section">
+            <input type="text" class="search-input" id="searchInput" placeholder="поиск по названию / возрасту / году">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="working">Работает</button>
+                <button class="filter-btn" data-filter="broken">Не работает</button>
+                <button class="filter-btn" data-filter="ssl">Ошибка SSL</button>
+            </div>
+        </div>
+    </div>
+
+    <table id="filmsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>URL</th>
+                <th>Возраст</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr><td colspan="5" style="text-align:center; padding:3rem; background:#0e121b; color:#637394;">загрузка фильмов...</td></tr>
+        </tbody>
+    </table>
+    <div class="footer-note">
+        <span>⏺ статус проверяется сразу после загрузки · чёрная тема</span>
+        <span class="inv-info">id инвертированы · открываются в новой вкладке</span>
+    </div>
+</div>
+
+<script>
+(function() {
+    if (typeof FilmsList === 'undefined') {
+        document.getElementById('tableBody').innerHTML = `<tr><td colspan="5" style="text-align:center; padding:2rem; color:#b77a7a;">✗ FilmsList не найден. Подключи films.js</td></tr>`;
+        return;
+    }
+
+    // исходное количество фильмов (для инверсии)
+    const TOTAL_FILMS = FilmsList.length;
+
+    // копия фильмов с исходным порядком, но uid будет инвертированным
+    const films = FilmsList.map((item, idx) => {
+        // прямой порядковый номер (индекс + 1)
+        const originalNumber = idx + 1;
+        // инвертированный номер: (TOTAL_FILMS - originalNumber + 1)
+        const invertedId = TOTAL_FILMS - originalNumber + 1;
+        return {
+            ...item,
+            originalIdx: idx,             // для сохранения порядка сортировки
+            displayId: invertedId,         // то, что показываем в колонке #
+            // для ссылки используем displayId (инвертированный)
+            status: 'waiting',
+            statusMsg: 'LOAD',
+        };
+    });
+
+    // ВАЖНО: сортируем по originalIdx, чтобы сохранить исходный порядок фильмов,
+    // а отображаемый номер (displayId) при этом инвертирован.
+    films.sort((a, b) => a.originalIdx - b.originalIdx);
+
+    const tbody = document.getElementById('tableBody');
+    const totalSpan = document.getElementById('totalCount');
+    const workingSpan = document.getElementById('workingCount');
+    const brokenSpan = document.getElementById('brokenCount');
+    const sslSpan = document.getElementById('sslCount');
+    const searchInput = document.getElementById('searchInput');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    let currentFilter = 'all';
+    let searchTerm = '';
+
+    // база для ссылки
+    const BASE_URL = 'https://kino.ketame.ru/pages/?id=';
+
+    // Сохраняем ссылки на DOM-элементы строк для быстрого обновления
+    const rowElements = new Map(); // key: displayId, value: DOM elements
+
+    function renderTable() {
+        const filtered = films.filter(f => {
+            if (currentFilter !== 'all') {
+                if (currentFilter === 'working' && f.status !== 'working') return false;
+                if (currentFilter === 'broken' && f.status !== 'broken') return false;
+                if (currentFilter === 'ssl' && f.status !== 'ssl') return false;
+            }
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                const titleMatch = f.Title.toLowerCase().includes(term);
+                const ageMatch = f.AgeLimit.toLowerCase().includes(term);
+                const yearMatch = (f.Title.match(/\((\d{4})/)?.[1] || '').includes(term);
+                return titleMatch || ageMatch || yearMatch;
+            }
+            return true;
+        });
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:2.5rem; background:#0f131c; color:#677b9e;">└ нет фильмов ┘</td></tr>`;
+            updateCounters();
+            rowElements.clear();
+            return;
+        }
+
+        let html = '';
+        filtered.forEach(f => {
+            let statusClass = 'status-wait';
+            let statusIcon = '<span class="loader-group"><span class="loader-dot"></span><span class="loader-dot" style="animation-delay:0.2s;"></span><span class="loader-dot" style="animation-delay:0.4s;"></span></span>';
+            let statusText = f.statusMsg;
+
+            if (f.status === 'working') {
+                statusClass = 'status-working';
+                statusIcon = '✓';
+                statusText = 'OK';
+            } else if (f.status === 'broken') {
+                statusClass = 'status-broken';
+                statusIcon = '✗';
+                statusText = 'ERROR';
+            } else if (f.status === 'ssl') {
+                statusClass = 'status-ssl';
+                statusIcon = '⚠';
+                statusText = 'NoSSL';
+            }
+
+            // Формируем ссылку с инвертированным ID
+            const linkUrl = BASE_URL + f.displayId;
+
+            html += `<tr data-film-id="${f.displayId}">
+                <td class="number-col">${f.displayId}</td>
+                <td class="title-col"><div id="title-box">
+                    <div>${f.Title}</div>
+                </td>
+                <td class="title-col">
+                    <div id="title-box0">
+                        <a id="tesp" class="external-link" href="${linkUrl}" target="_blank">
+                            📦
+                        </a>
+                        <a id="tesp" class="external-link" href="${f.VideoUrl}" target="_blank">
+                            🎥
+                        </a>
+                    </div>
+                </td>
+                <td class="age-col"><span class="age-badge">${f.AgeLimit || '?'}</span></td>
+                <td class="status-col"><span class="status ${statusClass}" data-status-cell="true"><i>${statusIcon}</i> ${statusText}</span></td>
+            </tr>`;
+        });
+        
+        tbody.innerHTML = html;
+        
+        // Сохраняем ссылки на элементы строк для быстрого обновления
+        rowElements.clear();
+        filtered.forEach(f => {
+            const row = tbody.querySelector(`tr[data-film-id="${f.displayId}"]`);
+            if (row) {
+                rowElements.set(f.displayId, {
+                    row: row,
+                    statusCell: row.querySelector('.status')
+                });
+            }
+        });
+        
+        updateCounters();
+    }
+
+    function updateCounters() {
+        totalSpan.innerText = `Количество: ${films.length}`;
+        workingSpan.innerText = `Работает: ${films.filter(f => f.status === 'working').length}`;
+        brokenSpan.innerText = `Не работает: ${films.filter(f => f.status === 'broken').length}`;
+        sslSpan.innerText = `Ошибка SSL: ${films.filter(f => f.status === 'ssl').length}`;
+    }
+
+    // Оптимизированная функция обновления статуса без перерисовки всей таблицы
+    function refreshFilm(displayId) {
+        const film = films.find(f => f.displayId === displayId);
+        if (!film) return;
+        
+        // Обновляем счетчики
+        updateCounters();
+        
+        // Проверяем, нужно ли обновлять статус в таблице
+        const rowData = rowElements.get(displayId);
+        if (!rowData) return; // Строка не отображается (фильтр/поиск)
+        
+        const statusSpan = rowData.statusCell;
+        if (!statusSpan) return;
+        
+        // Обновляем класс и содержимое статуса
+        let statusClass = 'status-wait';
+        let statusIcon = '<span class="loader-group"><span class="loader-dot"></span><span class="loader-dot" style="animation-delay:0.2s;"></span><span class="loader-dot" style="animation-delay:0.4s;"></span></span>';
+        let statusText = film.statusMsg;
+
+        if (film.status === 'working') {
+            statusClass = 'status-working';
+            statusIcon = '✓';
+            statusText = 'OK';
+        } else if (film.status === 'broken') {
+            statusClass = 'status-broken';
+            statusIcon = '✗';
+            statusText = 'ERROR';
+        } else if (film.status === 'ssl') {
+            statusClass = 'status-ssl';
+            statusIcon = '⚠';
+            statusText = 'NoSSL';
+        }
+        
+        // Обновляем классы
+        statusSpan.className = `status ${statusClass}`;
+        statusSpan.innerHTML = `<i>${statusIcon}</i> ${statusText}`;
+    }
+
+    async function checkFilm(film) {
+        if (!film.VideoUrl || typeof film.VideoUrl !== 'string') {
+            film.status = 'broken';
+            film.statusMsg = 'нет ссылки';
+            refreshFilm(film.displayId);
+            return;
+        }
+        let url = film.VideoUrl.trim();
+        if (!url.startsWith('http')) {
+            film.status = 'broken';
+            film.statusMsg = 'неверный формат';
+            refreshFilm(film.displayId);
+            return;
+        }
+
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 7000);
+
+            let response = await fetch(url, {
+                method: 'HEAD',
+                signal: controller.signal,
+                mode: 'no-cors'
+            }).catch(async () => {
+                const c2 = new AbortController();
+                const t2 = setTimeout(() => c2.abort(), 7000);
+                const r2 = await fetch(url, {
+                    method: 'GET',
+                    signal: c2.signal,
+                    mode: 'no-cors'
+                }).catch(e => { throw e; });
+                clearTimeout(t2);
+                return r2;
+            });
+
+            clearTimeout(timeoutId);
+
+            if (response.type === 'opaque' || response.status === 0) {
+                film.status = 'working';
+                film.statusMsg = 'Работает';
+            } else if (response.status >= 200 && response.status < 400) {
+                film.status = 'working';
+                film.statusMsg = `HTTP ${response.status}`;
+            } else {
+                film.status = 'broken';
+                film.statusMsg = `HTTP ${response.status}`;
+            }
+        } catch (err) {
+            const msg = err.message || '';
+            if (msg.includes('SSL') || msg.includes('certificate') || msg.includes('CERT') || msg.includes('secure')) {
+                film.status = 'ssl';
+                film.statusMsg = 'ssl ошибка';
+            } else if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('abort') || msg.includes('network')) {
+                film.status = 'broken';
+                film.statusMsg = 'сервер недоступен';
+            } else {
+                film.status = 'broken';
+                film.statusMsg = 'ошибка';
+            }
+        }
+        refreshFilm(film.displayId);
+    }
+
+    function startChecks() {
+        films.forEach(f => checkFilm(f).catch(e => console.warn));
+    }
+
+    function applyFilters() {
+        renderTable();
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            applyFilters();
+        });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        applyFilters();
+    });
+
+    // начальный рендер
+    renderTable();
+    // запуск проверки
+    startChecks();
+})();
+</script>
+</body>
+</html>
