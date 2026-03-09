@@ -1,5 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 /* Фон для страницы */
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+#tesx2::after {
+    font-family: "Unbounded", sans-serif;
+    position: absolute;
+    top: 16px;
+    left: 1px;
+    content: 'by kelix.me';
+    font-size: 12px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ff77e2 0%, #ff6f6f 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+#tesx2 {
+    font-family: "Unbounded", sans-serif;
+    display: flex;
+    position: relative;
+    top: -7px;
+}
+#site-logo-box2 {
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    padding: 0px;
+    border-radius: 5px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding-right: 6px;
+    gap: 6px;
+}
+#ketaru2 {
+    font-family: "Unbounded", sans-serif;
+    background: linear-gradient(135deg, #ff35a4 0%, #fff235 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 600 !important;
+    font-size: 20px;
+    position: relative !important;
+    top: -0px !important;
+    text-transform: uppercase !important;
+}
+#corp2 {
+    background: linear-gradient(135deg, #4c9aff 0%, #9ddbff 100%) !important;
+    -webkit-background-clip: text !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    /* color: #eeff8b !important; */
+    position: relative !important;
+    left: 0px !important;
+    bottom: 0px !important;
+    text-transform: uppercase !important;
+}
+
+#site-header{
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    height: 58px;
+    background: #020817;
+    margin: 50% auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    box-shadow: 2px 2px 4px #080c0f70;
+
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-bottom: #272727 solid 1px;
+}
+#site-header-box{
+    padding: 8px 10px 5px 10px;
+    max-width: 1315px;
+    height: 58px;
+    margin: 50% auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 body {
     background: var(--PageColor); /* Чёрный фон */
     margin: 0;
@@ -256,26 +337,6 @@ img, svg {
 #site-bg{
     background: #0d1218;
 }
-#site-header{
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    height: 58px;
-    background: #020817;
-    margin: 50% auto;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    border-bottom: 1px solid #1e293b;
-    box-shadow: 2px 2px 4px #080c0f70;
-}
-#site-header-box{
-    padding: 10px 10px 5px 10px;
-    max-width: 1315px;
-    height: 58px;
-    margin: 50% auto;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
 #site-logo-box{
     background: #1e293b;
     display: inline-flex;
@@ -353,7 +414,7 @@ main{
     font-family: 'Alegreya Sans SC', sans-serif;
     padding: 15px 25px;
 }
-main> *, #site-logo-box{
+main> *, #site-logo-box, #site-logo-box2{
     transform: translateX(); 
     animation: AnimX .5s forwards;
 }
@@ -453,41 +514,46 @@ A, A:visited, A:active{
 }
 #rel{
     color: #a0d6ff;
-    background: #222734;
+    background: #1a2c5a;
+    border: 1px solid #5182ff;
     font-family: rubik !important;
-    padding: 2px 8px;
+    padding: 1px 8px 0px 8px;
     height: 20px;
     align-content: center;
     border-radius: 3px;
     font-size: 14px;
     font-weight: 400;
     left: 4px;
-    top: 6px;
+    top: 5px;
     position: relative;
     margin-left: 10px;
 }
 #namm{
+    font-family: "Unbounded", sans-serif !important;
     position: absolute;
     display:inline-block;
     left: 149px;
     font-size: 18px;
+    font-weight: 400;
     
     /* width: 100%; */
-    top: 2px;
-    font-family: onest !important;
+    top: 1px;
+    /* font-family: onest !important; */
     color: #9ebcff;
 }
 #nam{
+    font-family: "Unbounded", sans-serif !important;
     white-space: nowrap;
     position: absolute;
     display:inline-block;
     left: 150px;
     font-size: 12px;
+    font-weight: 400;
     
     /* width: 100%; */
     top: 21px;
-    font-family: onest !important;
-    color: #ffef5b;
+    /* font-family: onest !important; */
+    color: #9e9e9e;
 }
 #page-name{
     max-width: 1315px;
