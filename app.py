@@ -224,7 +224,7 @@ while Видео in '':
 Страница = (f"""
 <meta property="og:title" content="{Имя}">
 <title>KR.Corp | {Имя}</title>
-<meta property="og:image" content="https://kino.ketame.ru/pages/{Файлов}/image.png">
+<meta property="og:image" content="https://kino.krcorp.ru/pages/{Файлов}/image.png">
 
 <!-- Форматирование -->
 <!DOCTYPE html>
@@ -277,7 +277,7 @@ while Видео in '':
             <div id="site-header-box">
                 <a href="../../">
                     <div id="site-logo-box">
-                        <img id="site-logo-img" src="https://ketame.ru/corp.png">
+                        <img id="site-logo-img" src="https://krcorp.ru/corp.png">
                         <name id="site-logo-name">
                             <span id="ketaru">Ketaru</span>
                             <span id="corp">Corp</span>

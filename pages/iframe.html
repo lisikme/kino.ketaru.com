@@ -108,7 +108,7 @@
                 const ogDescription = document.querySelector('meta[property="og:description"]');
                 
                 if (ogTitle) ogTitle.setAttribute('content', film.Title);
-                if (ogImage) ogImage.setAttribute('content', `https://kino.ketame.ru/pages/${filmId}/image.png`);
+                if (ogImage) ogImage.setAttribute('content', `https://kino.krcorp.ru/pages/${filmId}/image.png`);
                 if (ogDescription) ogDescription.setAttribute('content', `${film.AgeLimit} | ${film.Title}`);
                 
                 // Для GitHub Pages: также обновляем через document.write если meta тегов нет
@@ -116,7 +116,7 @@
                     document.write(`<meta property="og:title" content="${film.Title}">`);
                 }
                 if (!ogImage) {
-                    document.write(`<meta property="og:image" content="https://kino.ketame.ru/pages/${filmId}/image.png">`);
+                    document.write(`<meta property="og:image" content="https://kino.krcorp.ru/pages/${filmId}/image.png">`);
                 }
                 if (!ogDescription) {
                     document.write(`<meta property="og:description" content="${film.AgeLimit} | ${film.Title}">`);
@@ -126,7 +126,7 @@
                 const twitterTitle = document.querySelector('meta[name="twitter:title"]');
                 if (!twitterTitle) {
                     document.write(`<meta name="twitter:title" content="${film.Title}">`);
-                    document.write(`<meta name="twitter:image" content="https://kino.ketame.ru/pages/${filmId}/image.png">`);
+                    document.write(`<meta name="twitter:image" content="https://kino.krcorp.ru/pages/${filmId}/image.png">`);
                     document.write(`<meta name="twitter:description" content="${film.AgeLimit} | ${film.Title}">`);
                 }
 
