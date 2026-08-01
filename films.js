@@ -1,5 +1,20 @@
 const FilmsList = [
     {
+        'Title': 'Пушки Акимбо (2019)',
+        'AgeLimit': '18+',
+        'VideoUrl': 'https://polynoy-as.newplayjj.com:9443?kp=1142604&token=e9a962df5e96874972bd776d247fa6'
+    },
+    {
+        'Title': 'Баранкины и камни силы (сериал 2025)',
+        'AgeLimit': '16+',
+        'VideoUrl': 'https://tevtons-as.stloadi.live/?token_movie=fc0dd3b3ed321be3ec951b9c5161e6&token=L9qabOl8lRE440kXbjJZlGGy6A2mwd'
+    },
+    {
+        'Title': 'О моём перерождении в слизь (сериал 2018 - 2021)',
+        'AgeLimit': '18+',
+        'VideoUrl': 'https://polynoy-as.newplayjj.com:9443?kp=1224030?&season=1&episode=1&token=e9a962df5e96874972bd776d247fa6'
+    },
+    {
         'Title': 'Пила. Джокер (2024)',
         'AgeLimit': '18+',
         'VideoUrl': 'https://attorney-as.allarknow.online/?token_movie=a90fe1c9f1c714fc2d6bd2bbe951cc&token=7dc3afc17234b117e1ad6f50bd0030'
@@ -1317,7 +1332,7 @@ const FilmsList = [
     {
         'Title': 'Заботливая 800-летняя жена! Senko Сэнко (2019)',
         'AgeLimit': '18+',
-        'VideoUrl': 'https://vk.com/video_ext.php?oid=486247008&id=456240966&hd=2&autoplay=1'
+        'VideoUrl': 'https://vk.com/video_ext.php?oid=486247008&id=456240966'
     },
     {
         'Title': 'Плохие парни (2022)',
